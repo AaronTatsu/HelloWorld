@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.helloworld">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HelloWorld"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".BackExercise_3_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".BackExercise_3"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".BackExercise_2_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".BackExercise_2"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".BackExercise_1_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".BackExercise_1"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".BackExercise"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ArmsExercise_3_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ArmsExercise_3"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ArmsExercise_2_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ArmsExercise_2"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ArmsExercise_1_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ArmsExercise_1"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ArmsExercise"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".PushUp_3_Squeeze"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ChestExercise_3"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".PushUp_2_Shuffle"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".NotAvailablePage"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".PushUp_1"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ChestExercise_2"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ChestExercise_1"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ChestExercise"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ExerciseActivity"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".CalendarActivity"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".BMIActivity"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/FullScreen" />
+    </application>
+
+</manifest>

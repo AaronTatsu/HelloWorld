@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_white"
+    android:orientation="vertical"
+    tools:context=".ArmsExercise">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp">
+
+        <ImageView
+            android:id="@+id/back_pressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:padding="5dp"
+            android:src="@drawable/back_arrow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Arms Exercise"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/round_back_exercise_layout">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Triceps Dip"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Repeat 2 Times"
+                        android:textColor="@color/dark_gray"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="30dp"
+                        android:text="1:00 MINUTE"
+                        android:textColor="@color/orange"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+                    <pl.droidsonroids.gif.GifImageView
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/arms_triceps"
+                        android:padding="8dp"
+                        android:layout_marginTop="15dp"/>
+                    <ImageView
+                        android:id="@+id/arms_btn_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:src="@drawable/right_arrow_icon"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/round_back_exercise_layout"
+                android:layout_marginTop="7dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Plank up and down"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Repeat 2 Times"
+                        android:textColor="@color/dark_gray"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="30dp"
+                        android:text="1:00 MINUTE"
+                        android:textColor="@color/orange"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+                    <pl.droidsonroids.gif.GifImageView
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/arms_plank"
+                        android:padding="8dp"
+                        android:layout_marginTop="15dp"/>
+                    <ImageView
+                        android:id="@+id/arms_btn_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:src="@drawable/right_arrow_icon"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/round_back_exercise_layout"
+                android:layout_marginTop="7dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Triangle Push Ups"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Repeat 2 Times"
+                        android:textColor="@color/dark_gray"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="30dp"
+                        android:text="1:00 MINUTE"
+                        android:textColor="@color/orange"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+                    <pl.droidsonroids.gif.GifImageView
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/arms_triangle"
+                        android:padding="8dp"
+                        android:layout_marginTop="15dp"/>
+                    <ImageView
+                        android:id="@+id/arms_btn_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:src="@drawable/right_arrow_icon"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

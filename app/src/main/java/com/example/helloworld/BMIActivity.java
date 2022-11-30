@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class BMIActivity extends AppCompatActivity {
     EditText height, weight;
@@ -98,7 +99,7 @@ public class BMIActivity extends AppCompatActivity {
                         return true;
                     case R.id.nav_cal:
                         startActivity(new Intent(getApplicationContext()
-                                , CalendarActivity.class));
+                                , ExtraActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_vid:

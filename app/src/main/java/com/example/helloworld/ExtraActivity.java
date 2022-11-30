@@ -2,7 +2,6 @@ package com.example.helloworld;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,34 +9,16 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
-    private ViewPager2 viewPager2;
-    private List<Video> videoList;
-    private VideoAdapter adapter;
+public class ExtraActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        videoList = new ArrayList<>();
-        viewPager2 = findViewById(R.id.viewPager2);
-
-        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.a, "Tasty and Easy Healthy Meal ", "    This Video Shows A Healty Meal That You May Enjoy. #Mealprep #weightloss #Healthy"));
-        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.b, "Healthy Granola Bars | Quick and easy Protein Bars", "   If you're looking for the quickest healthy snack to make for a busy week ahead, these granola bars are for you! Loaded with oats and dry fruits, these granola bars are not only easy to make but also taste absolutely delicious!"));
-        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.c, "Easy, Healthy, High Protein Breakfast Sandwich", "   Hey guys, Fithackster back at it again with another recipe video. In today's video, I will be showing you how to make an easy high protein and low calorie breakfast recipe that will keep you full and fuel your body for a great start to your day!"));
-
-        adapter = new VideoAdapter(videoList);
-        viewPager2.setAdapter(adapter);
-
+        setContentView(R.layout.activity_extra);
         BottomNavigationView bottomNavigationView = findViewById(R.id.BottonNavigationView);
 
-        bottomNavigationView.setSelectedItemId(R.id.nav_vid);
+        bottomNavigationView.setSelectedItemId(R.id.nav_cal);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -72,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void onBackPressed() {
-        Toast.makeText(MainActivity.this, "Press Home Button", Toast.LENGTH_SHORT).show();
+    public void onBackPressed(){
+        ExtraActivity.super.onBackPressed();
     }
 }

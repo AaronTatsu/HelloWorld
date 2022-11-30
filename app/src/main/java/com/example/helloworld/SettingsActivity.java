@@ -113,7 +113,7 @@ public class SettingsActivity extends AppCompatActivity {
                         return true;
                     case R.id.nav_cal:
                         startActivity(new Intent(getApplicationContext()
-                                ,CalendarActivity.class));
+                                , ExtraActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_vid:

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1008546637960",
+    "project_id": "tikdb-346cd",
+    "storage_bucket": "tikdb-346cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008546637960:android:5071bc28eaa342b86f173d",
+        "android_client_info": {
+          "package_name": "com.example.helloworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008546637960-fdfqd8kllb5oj0g4j8nhln68shma1k34.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5sUSrZaNah_PiZgB7s6SL8BJBJmZe-9Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008546637960-fdfqd8kllb5oj0g4j8nhln68shma1k34.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

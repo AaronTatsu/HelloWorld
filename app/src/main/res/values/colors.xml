@@ -19,4 +19,5 @@
     <color name="textsize">#13B2C3</color>
     <color name="notifications">#E6A326</color>
     <color name="security">#D95F69</color>
+    <color name="logout">#4879FF</color>
 </resources>

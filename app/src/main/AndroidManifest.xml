@@ -11,6 +11,10 @@
         android:theme="@style/Theme.HelloWorld"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".UserProfileActivity"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />

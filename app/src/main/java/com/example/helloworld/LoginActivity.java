@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private ImageView eyeIcon;
     private TextView register, forgotpass;
     private EditText editEmail, editPassword;
     private Button btnLogin;
@@ -32,6 +36,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        eyeIcon = (ImageView) findViewById(R.id.eyeIcon);
+        eyeIcon.setOnClickListener(this);
 
         register = (TextView) findViewById(R.id.register);
         register.setOnClickListener(this);
@@ -52,6 +59,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+
+            case R.id.eyeIcon:
+                if (editPassword.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
+                    editPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    eyeIcon.setImageResource(R.drawable.invisible_eye_icon);
+                } else {
+                    editPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    eyeIcon.setImageResource(R.drawable.visible_eye_icon);
+                }
+                break;
+
             case R.id.register:
                 startActivity(new Intent(this,RegisterActivity.class));
                 break;
@@ -107,9 +125,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(LoginActivity.this, "Please check your email to verify your account!", Toast.LENGTH_LONG).show();
                     }
                 }else{
-                    Toast.makeText(LoginActivity.this, "Failed to login!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Failed to login! Try again!", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (mAuth.getCurrentUser() != null && user.isEmailVerified()){
+            Toast.makeText(this, "Already logged in!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }else{
+            return;
+        }
+    }
+    public void onBackPressed() {
+        Toast.makeText(LoginActivity.this, "Press Home Button to exit", Toast.LENGTH_SHORT).show();
     }
 }

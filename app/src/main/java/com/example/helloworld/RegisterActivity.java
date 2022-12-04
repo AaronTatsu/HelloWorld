@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -18,17 +21,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView logoImage;
+    private ImageView logoImage, eyeIcon1, eyeIcon2;
     private TextView bckLogin;
     private Button btnRegister;
     private EditText editFullName, editAge, editEmail, editPassword, editConPassword;
     private ProgressBar progressBar;
+
+    private static final String TAG = "RegisterActivity";
 
     private FirebaseAuth mAuth;
 
@@ -41,6 +49,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         logoImage = (ImageView) findViewById(R.id.logoImage);
         logoImage.setOnClickListener(this);
+
+        eyeIcon1 = (ImageView) findViewById(R.id.eyeIcon1);
+        eyeIcon1.setOnClickListener(this);
+
+        eyeIcon2 = (ImageView) findViewById(R.id.eyeIcon2);
+        eyeIcon2.setOnClickListener(this);
 
         bckLogin = (TextView) findViewById(R.id.bckLogin);
         bckLogin.setOnClickListener(this);
@@ -63,6 +77,26 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()){
             case R.id.logoImage:
                 startActivity(new Intent(this, LoginActivity.class));
+                break;
+
+            case R.id.eyeIcon1:
+                if (editPassword.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
+                    editPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    eyeIcon1.setImageResource(R.drawable.invisible_eye_icon);
+                } else {
+                    editPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    eyeIcon1.setImageResource(R.drawable.visible_eye_icon);
+                }
+                break;
+
+            case R.id.eyeIcon2:
+                if (editConPassword.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
+                    editConPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    eyeIcon2.setImageResource(R.drawable.invisible_eye_icon);
+                } else {
+                    editConPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    eyeIcon2.setImageResource(R.drawable.visible_eye_icon);
+                }
                 break;
 
             case R.id.bckLogin:
@@ -138,16 +172,27 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                     if(task.isSuccessful()){
                                         Toast.makeText(RegisterActivity.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
-                                        finish();
+                                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                     }else{
-                                        Toast.makeText(RegisterActivity.this,"Failed to register! Try again!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(RegisterActivity.this,"Failed to register! Try Again", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
                                     }
                                 }
                             });
                         }else{
-                            Toast.makeText(RegisterActivity.this,"Failed to register!", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
+                            try {
+                                throw task.getException();
+                            } catch (FirebaseAuthWeakPasswordException e){
+                                editPassword.setError("Your password is too weak! Please try again.");
+                            } catch (FirebaseAuthInvalidCredentialsException e){
+                                editEmail.setError("Your email is invalid or already in use.");
+                            } catch (FirebaseAuthUserCollisionException e){
+                                editEmail.setError("The email is already in used. Please enter another email.");
+                            } catch (Exception e){
+                                Log.e(TAG, e.getMessage());
+                                Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
                         }
                     }
                 });

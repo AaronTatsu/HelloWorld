@@ -73,6 +73,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void onBackPressed() {
-        Toast.makeText(MainActivity.this, "Press Home Button", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "Press Home Button to exit", Toast.LENGTH_SHORT).show();
     }
 }

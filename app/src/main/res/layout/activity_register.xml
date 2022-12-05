@@ -122,6 +122,50 @@
         android:src="@drawable/invisible_eye_icon"
         />
 
+
+    <TextView
+        android:id="@+id/termsAgreementText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:textSize="9dp"
+        android:text="By creating an account, you are agreeing to our "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/conPassword" />
+
+    <TextView
+        android:id="@+id/termsAgreementCon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="9dp"
+        android:text="terms &amp; conditions "
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toEndOf="@id/termsAgreementText"
+        app:layout_constraintTop_toBottomOf="@+id/conPassword" />
+
+    <TextView
+        android:id="@+id/termsAgreementText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="9dp"
+        android:text="and "
+        app:layout_constraintStart_toEndOf="@id/termsAgreementCon"
+        app:layout_constraintTop_toBottomOf="@+id/conPassword" />
+
+    <TextView
+        android:id="@+id/termsAgreementPrivacy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="9dp"
+        android:text="privacy policy"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toEndOf="@id/termsAgreementText1"
+        app:layout_constraintTop_toBottomOf="@+id/conPassword" />
+
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="325dp"
@@ -130,10 +174,10 @@
         android:textSize="22dp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/conPassword"
+        app:layout_constraintTop_toBottomOf="@+id/termsAgreementText"
         android:backgroundTint="@color/black"/>
 
     <TextView

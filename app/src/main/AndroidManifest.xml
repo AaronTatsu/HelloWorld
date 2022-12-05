@@ -11,6 +11,17 @@
         android:theme="@style/Theme.HelloWorld"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SettingsFrequentAsked"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsAboutUs"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".SettingsContactUs"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
             android:name=".UserProfileActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />

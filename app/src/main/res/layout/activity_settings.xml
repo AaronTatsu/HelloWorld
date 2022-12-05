@@ -252,7 +252,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
                         android:layout_toEndOf="@id/SendMessage"
-                        android:text="Send Us a Message"
+                        android:text="Contact Us"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 

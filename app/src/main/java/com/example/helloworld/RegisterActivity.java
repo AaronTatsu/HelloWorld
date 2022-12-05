@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView logoImage, eyeIcon1, eyeIcon2;
-    private TextView bckLogin;
+    private TextView bckLogin, termsCon, termsPrivacy;
     private Button btnRegister;
     private EditText editFullName, editAge, editEmail, editPassword, editConPassword;
     private ProgressBar progressBar;
@@ -55,6 +55,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         eyeIcon2 = (ImageView) findViewById(R.id.eyeIcon2);
         eyeIcon2.setOnClickListener(this);
+
+        termsCon = (TextView) findViewById(R.id.termsAgreementCon);
+        termsCon.setOnClickListener(this);
+
+        termsPrivacy = (TextView) findViewById(R.id.termsAgreementPrivacy);
+        termsPrivacy.setOnClickListener(this);
 
         bckLogin = (TextView) findViewById(R.id.bckLogin);
         bckLogin.setOnClickListener(this);
@@ -97,6 +103,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     editConPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     eyeIcon2.setImageResource(R.drawable.visible_eye_icon);
                 }
+                break;
+
+            case R.id.termsAgreementCon:
+                startActivity(new Intent(this, NotAvailablePage.class));
+                break;
+
+            case R.id.termsAgreementPrivacy:
+                startActivity(new Intent(this, NotAvailablePage.class));
                 break;
 
             case R.id.bckLogin:

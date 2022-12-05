@@ -147,11 +147,11 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.settings_btnMessage:
-                startActivity(new Intent(this, NotAvailablePage.class));
+                startActivity(new Intent(this, SettingsContactUs.class));
                 break;
 
             case R.id.settings_btnAbout:
-                startActivity(new Intent(this, NotAvailablePage.class));
+                startActivity(new Intent(this, SettingsAboutUs.class));
                 break;
 
             case R.id.settings_btnFaqs:

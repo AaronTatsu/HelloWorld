@@ -46,7 +46,7 @@
             <ImageView
                 android:id="@+id/LogoImage"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="135dp"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/logoimage"/>
             <TextView
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:text="TikTonic"
                 android:textColor="@color/black"
-                android:textSize="40dp"
+                android:textSize="35dp"
                 android:textStyle="bold"
                 android:layout_gravity="center"/>
 
@@ -69,26 +69,10 @@
                 android:orientation="vertical"
                 android:padding="15dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="Greetings,"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/about_us" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/about_us1"
-                    android:layout_marginTop="7dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/faqsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
             </LinearLayout>
 

@@ -155,7 +155,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.settings_btnFaqs:
-                startActivity(new Intent(this, NotAvailablePage.class));
+                startActivity(new Intent(this, SettingsFrequentAsked.class));
                 break;
 
             case R.id.settings_btnLogOut:

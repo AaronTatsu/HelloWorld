@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/light_white"
-    tools:context=".SettingsActivity"
-    android:orientation="vertical">
+    tools:context=".SettingsActivity">
 
     <RelativeLayout
+        android:id="@+id/settingsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp">
@@ -19,12 +20,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:padding="5dp"
             android:layout_marginStart="10dp"
+            android:padding="5dp"
             android:src="@drawable/back_arrow" />
 
 
         <TextView
+            android:id="@+id/settingsTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -36,30 +38,35 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/BottonNavigationView"
+        android:layout_below="@+id/settingsLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
+                android:background="@drawable/rounded_corner_black"
                 android:padding="18dp"
-                android:src="@drawable/profile"
-                android:background="@drawable/rounded_corner_black"/>
+                android:src="@drawable/profile" />
+
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
+                android:hint="Loading..."
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:hint="Loading..."/>
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/Profilebtn"
@@ -71,8 +78,8 @@
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:text="Edit Profile"
-                android:textColor="@color/white"
                 android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="15sp" />
 
             <LinearLayout
@@ -98,6 +105,7 @@
                         android:src="@drawable/night_mode" />
 
                     <TextView
+                        android:id="@+id/nightModeTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -108,6 +116,7 @@
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/themeSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -132,6 +141,7 @@
                         android:src="@drawable/bell" />
 
                     <TextView
+                        android:id="@+id/notificationTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -153,78 +163,7 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/round_back_settings_layout"
-            android:orientation="vertical"
-            android:padding="15dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/Security"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/round_back_logout"
-                    android:padding="7dp"
-                    android:src="@drawable/security" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_toEndOf="@id/Security"
-                    android:text="Security &amp; Privacy"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/settings_btnSecurity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/right_arrow_icon" />
-            </RelativeLayout>
-
-                <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-                    <ImageView
-                        android:id="@+id/LanguageEdit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/round_back_security"
-                        android:padding="7dp"
-                        android:src="@drawable/language" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_toEndOf="@id/LanguageEdit"
-                    android:text="Languages"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/settings_btnLang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/right_arrow_icon" />
-            </RelativeLayout>
-        </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -234,6 +173,83 @@
                 android:background="@drawable/round_back_settings_layout"
                 android:orientation="vertical"
                 android:padding="15dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/Security"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/round_back_logout"
+                        android:padding="7dp"
+                        android:src="@drawable/security" />
+
+                    <TextView
+                        android:id="@+id/securityTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/Security"
+                        android:text="Security &amp; Privacy"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/settings_btnSecurity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/right_arrow_icon" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/LanguageEdit"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/round_back_security"
+                        android:padding="7dp"
+                        android:src="@drawable/language" />
+
+                    <TextView
+                        android:id="@+id/langTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/LanguageEdit"
+                        android:text="Languages"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/settings_btnLang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/right_arrow_icon" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_back_settings_layout"
+                android:orientation="vertical"
+                android:padding="15dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -247,6 +263,7 @@
                         android:src="@drawable/message" />
 
                     <TextView
+                        android:id="@+id/contactTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -264,6 +281,7 @@
                         android:layout_centerVertical="true"
                         android:src="@drawable/right_arrow_icon" />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -278,6 +296,7 @@
                         android:src="@drawable/aboutus" />
 
                     <TextView
+                        android:id="@+id/aboutTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -295,6 +314,7 @@
                         android:layout_centerVertical="true"
                         android:src="@drawable/right_arrow_icon" />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -309,6 +329,7 @@
                         android:src="@drawable/faqs" />
 
                     <TextView
+                        android:id="@+id/FAQsTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -326,6 +347,7 @@
                         android:layout_centerVertical="true"
                         android:src="@drawable/right_arrow_icon" />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -340,6 +362,7 @@
                         android:src="@drawable/logout" />
 
                     <TextView
+                        android:id="@+id/logOutTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -358,35 +381,26 @@
                         android:src="@drawable/right_arrow_icon" />
                 </RelativeLayout>
             </LinearLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp">
-
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/BottonNavigationView"
-                    android:layout_width="700dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="22dp"
-                    android:background="@drawable/transparent_background"
-                    android:backgroundTint="@color/white"
-                    android:elevation="20dp"
-                    app:itemIconSize="30dp"
-                    app:itemRippleColor="@android:color/transparent"
-                    app:labelVisibilityMode="unlabeled"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:menu="@menu/bottom_menu" />
-            </RelativeLayout>
-
-
         </LinearLayout>
 
     </ScrollView>
 
-</LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/BottonNavigationView"
+        android:layout_width="700dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/transparent_background"
+        android:backgroundTint="@color/white"
+        android:elevation="30dp"
+        android:padding="10dp"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@drawable/bottom_icons_color"
+        app:itemRippleColor="@android:color/transparent"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_menu" />
+
+</RelativeLayout>

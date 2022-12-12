@@ -3,6 +3,7 @@
     package="com.example.helloworld">
 
     <application
+        android:name=".ThemeSettings"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".SecurityActivity"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
         <activity
             android:name=".SettingsFrequentAsked"
             android:exported="false"

@@ -2,13 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bmiParentView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BMIActivity"
     android:background="@color/light_white">
 
     <TextView
-        android:id="@+id/bmicalculator"
+        android:id="@+id/bmiCalculator"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="30dp"
@@ -25,17 +26,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/bmicalculator"
+        android:layout_below="@id/bmiCalculator"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
         <TextView
+            android:id="@+id/txtHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Height"
             android:textSize="15dp"
             android:textColor="@color/black"
-            android:textStyle="normal"
-            android:id="@+id/txtheight"/>
+            android:textStyle="normal" />
 
         <EditText
             android:id="@+id/Height"
@@ -49,13 +50,13 @@
             android:textColorHint="@color/black"
             android:backgroundTint="@color/black"/>
         <TextView
+            android:id="@+id/txtWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Weight"
             android:textSize="15dp"
             android:textColor="@color/black"
-            android:textStyle="normal"
-            android:id="@+id/txtWeight"/>
+            android:textStyle="normal"/>
         <EditText
             android:id="@+id/Weight"
             android:layout_width="match_parent"
@@ -81,19 +82,20 @@
             android:layout_weight="1"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/txtMale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Male"
                 android:textSize="15dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textStyle="normal"
-                android:id="@+id/txtmale"/>
+                android:textStyle="normal"/>
             <ImageView
                 android:id="@+id/male"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:src="@drawable/male"
+                android:background="@color/light_white"
                 android:padding="10dp"/>
         </LinearLayout>
         <LinearLayout
@@ -103,19 +105,20 @@
             android:layout_weight="1"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/txtFemale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Female"
                 android:textSize="15dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textStyle="normal"
-                android:id="@+id/txtfemale"/>
+                android:textStyle="normal"/>
             <ImageView
                 android:id="@+id/female"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:src="@drawable/female"
+                android:background="@color/light_white"
                 android:padding="10dp"/>
         </LinearLayout>
     </LinearLayout>
@@ -129,7 +132,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@color/green"
+        android:background="@color/red"
         android:text="Calculate"
         android:textColor="@color/white"
         android:textSize="20dp"
@@ -162,26 +165,22 @@
         android:textSize="16dp"
         android:textStyle="bold" />
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/BottonNavigationView"
         android:layout_width="700dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/transparent_background"
         android:backgroundTint="@color/white"
-        android:elevation="20dp"
+        android:elevation="30dp"
+        android:padding="10dp"
         app:itemIconSize="30dp"
+        app:itemIconTint="@drawable/bottom_icons_color"
         app:itemRippleColor="@android:color/transparent"
         app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_menu" />
 
 </RelativeLayout>

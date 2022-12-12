@@ -2,8 +2,10 @@ package com.example.helloworld;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -19,6 +21,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class BMIActivity extends AppCompatActivity {
+
+    // BMI Function
     EditText height, weight;
     ImageView male, female;
     LinearLayout malelayout, femalelayout;
@@ -28,11 +32,17 @@ public class BMIActivity extends AppCompatActivity {
     String user="0";
     String res;
 
+    // Theme Function
+    private View bmiParentView;
+    private TextView bmiCalculator, txtHeight, txtWeight, txtMale, txtFemale;
+    private ThemeSettings settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmiactivity);
 
+        // BMI Function
         height=findViewById(R.id.Height);
         weight=findViewById(R.id.Weight);
         male=findViewById(R.id.male);
@@ -46,7 +56,7 @@ public class BMIActivity extends AppCompatActivity {
         malelayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                male.setColorFilter(getResources().getColor(R.color.green));
+                male.setColorFilter(getResources().getColor(R.color.red));
                 female.setColorFilter(getResources().getColor(R.color.black));
                 user="Male";
             }
@@ -54,7 +64,7 @@ public class BMIActivity extends AppCompatActivity {
         femalelayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                female.setColorFilter(getResources().getColor(R.color.green));
+                female.setColorFilter(getResources().getColor(R.color.red));
                 male.setColorFilter(getResources().getColor(R.color.black));
                 user="Female";
             }
@@ -73,9 +83,19 @@ public class BMIActivity extends AppCompatActivity {
                     height.requestFocus();
                     return;
                 }
+                else if (TextUtils.isDigitsOnly(str1)){
+                    height.setError("Please insert numbers only");
+                    height.requestFocus();
+                    return;
+                }
                 else if (TextUtils.isEmpty(str2)){
                     weight.setError("Enter Weight");
                     weight.requestFocus();
+                    return;
+                }
+                else if (TextUtils.isDigitsOnly(str2)){
+                    height.setError("Please insert numbers only");
+                    height.requestFocus();
                     return;
                 }
                 else
@@ -85,6 +105,7 @@ public class BMIActivity extends AppCompatActivity {
             }
         });
 
+        //Bottom Intent
         BottomNavigationView bottomNavigationView = findViewById(R.id.BottonNavigationView);
 
         bottomNavigationView.setSelectedItemId(R.id.nav_bmi);
@@ -121,8 +142,87 @@ public class BMIActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        //Theme
+        settings = (ThemeSettings) getApplication();
+
+        initWidgets();
+        loadSharedPreferences();
     }
-    //BMI
+
+    private void initWidgets() {
+
+        bmiParentView = findViewById(R.id.bmiParentView);
+        bmiCalculator = findViewById(R.id.bmiCalculator);
+        txtHeight = findViewById(R.id.txtHeight);
+        txtWeight = findViewById(R.id.txtWeight);
+        txtMale = findViewById(R.id.txtMale);
+        txtFemale = findViewById(R.id.txtFemale);
+
+    }
+
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
+        boolean status = sharedPreferences.getBoolean(ThemeSettings.SWITCH_STATUS, false);
+        settings.setSwitchStatus(status);
+        settings.setCustomTheme(theme);
+        updateView();
+    }
+
+    private void updateView() {
+
+        SharedPreferences.Editor editor = getSharedPreferences(ThemeSettings.PREFERENCES, MODE_PRIVATE).edit();
+
+        final int black = ContextCompat.getColor(this, R.color.black);
+        final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.white);
+
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
+
+
+            bmiCalculator.setTextColor(white);
+            txtHeight.setTextColor(white);
+            height.setTextColor(white);
+            height.setHintTextColor(white);
+            txtWeight.setTextColor(white);
+            weight.setTextColor(white);
+            weight.setHintTextColor(white);
+            txtMale.setTextColor(white);
+            male.setBackgroundColor(white);
+            female.setBackgroundColor(white);
+            txtFemale.setTextColor(white);
+            result.setBackgroundColor(white);
+            condition.setBackgroundColor(white);
+            bmiParentView.setBackgroundColor(black);
+            editor.putString(ThemeSettings.CUSTOM_THEME, ThemeSettings.DARK_THEME);
+            editor.putBoolean(ThemeSettings.SWITCH_STATUS, true);
+            editor.apply();
+
+        }else{
+
+            bmiCalculator.setTextColor(black);
+            txtHeight.setTextColor(black);
+            height.setTextColor(black);
+            height.setHintTextColor(black);
+            txtWeight.setTextColor(black);
+            weight.setTextColor(black);
+            txtMale.setTextColor(black);
+            male.setBackgroundColor(bgwhite);
+            female.setBackgroundColor(bgwhite);
+            txtFemale.setTextColor(black);
+            result.setBackgroundColor(black);
+            condition.setBackgroundColor(black);
+            bmiParentView.setBackgroundColor(bgwhite);
+            editor.putString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
+            editor.putBoolean(ThemeSettings.SWITCH_STATUS, false);
+            editor.apply();
+        }
+    }
+
+
+    //BMI Calculation
     private void calculate(){
         h=Float.parseFloat(height.getText().toString());
         w=Float.parseFloat(weight.getText().toString());

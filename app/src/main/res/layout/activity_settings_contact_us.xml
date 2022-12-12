@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contactParentView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_white"
@@ -25,6 +26,7 @@
 
 
         <TextView
+            android:id="@+id/contactTitleTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -70,6 +72,7 @@
                 android:padding="15dp">
 
                 <TextView
+                    android:id="@+id/contacttv1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Connect with us!"
@@ -91,7 +94,7 @@
                         android:src="@drawable/contact_email" />
 
                     <TextView
-                        android:id="@+id/fullname"
+                        android:id="@+id/contacttv2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -120,6 +123,7 @@
                         android:src="@drawable/contact_phone" />
 
                     <TextView
+                        android:id="@+id/contacttv3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -148,6 +152,7 @@
                         android:src="@drawable/contact_link" />
 
                     <TextView
+                        android:id="@+id/contacttv4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -176,6 +181,7 @@
                         android:src="@drawable/contact_youtube" />
 
                     <TextView
+                        android:id="@+id/contacttv5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -204,6 +210,7 @@
                         android:src="@drawable/contact_facebook" />
 
                     <TextView
+                        android:id="@+id/contacttv6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -232,6 +239,7 @@
                         android:src="@drawable/contact_insta" />
 
                     <TextView
+                        android:id="@+id/contacttv7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"

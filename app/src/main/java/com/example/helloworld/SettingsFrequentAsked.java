@@ -1,24 +1,36 @@
 package com.example.helloworld;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class SettingsFrequentAsked extends AppCompatActivity {
 
+    // Intent
     ImageView bckBtn;
 
+    // FAQs
     ArrayList<FAQsClass> arrayList;
     RecyclerView recyclerView;
     FAQsAdapter adapter;
+
+    // SharedPreferences
+    private View faqsParentView;
+    private TextView whiteFaqsTitle, logoText;
+    private ThemeSettings settings;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +60,49 @@ public class SettingsFrequentAsked extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        settings = (ThemeSettings) getApplication();
+
+        initWidgets();
+        loadSharedPreferences();
+
     }
+    private void initWidgets() {
+
+        View inflatedView = getLayoutInflater().inflate(R.layout.faqs_item_design, null);
+
+        faqsParentView = findViewById(R.id.faqsParentView);
+        whiteFaqsTitle = findViewById(R.id.whiteFaqsTitle);
+        logoText = findViewById(R.id.logoText);
+
+    }
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
+        settings.setCustomTheme(theme);
+        updateThemeView();
+    }
+    private void updateThemeView() {
+
+        final int black = ContextCompat.getColor(this, R.color.black);
+        final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.white);
+
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
+
+            whiteFaqsTitle.setTextColor(white);
+            logoText.setTextColor(white);
+            faqsParentView.setBackgroundColor(black);
+
+        }else{
+
+            whiteFaqsTitle.setTextColor(black);
+            logoText.setTextColor(black);
+            faqsParentView.setBackgroundColor(bgwhite);
+        }
+    }
+    // Back Intent
     public void onBackPressed(){
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
         startActivity(intent);

@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.w3c.dom.Text;
+
 public class BMIActivity extends AppCompatActivity {
 
     // BMI Function
@@ -83,7 +85,7 @@ public class BMIActivity extends AppCompatActivity {
                     height.requestFocus();
                     return;
                 }
-                else if (TextUtils.isDigitsOnly(str1)){
+                else if (!TextUtils.isDigitsOnly(str1)){
                     height.setError("Please insert numbers only");
                     height.requestFocus();
                     return;
@@ -93,7 +95,7 @@ public class BMIActivity extends AppCompatActivity {
                     weight.requestFocus();
                     return;
                 }
-                else if (TextUtils.isDigitsOnly(str2)){
+                else if (!TextUtils.isDigitsOnly(str2)){
                     height.setError("Please insert numbers only");
                     height.requestFocus();
                     return;
@@ -165,15 +167,11 @@ public class BMIActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
         String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
-        boolean status = sharedPreferences.getBoolean(ThemeSettings.SWITCH_STATUS, false);
-        settings.setSwitchStatus(status);
         settings.setCustomTheme(theme);
-        updateView();
+        updateThemeView();
     }
 
-    private void updateView() {
-
-        SharedPreferences.Editor editor = getSharedPreferences(ThemeSettings.PREFERENCES, MODE_PRIVATE).edit();
+    private void updateThemeView() {
 
         final int black = ContextCompat.getColor(this, R.color.black);
         final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
@@ -194,11 +192,10 @@ public class BMIActivity extends AppCompatActivity {
             female.setBackgroundColor(white);
             txtFemale.setTextColor(white);
             result.setBackgroundColor(white);
+            result.setTextColor(black);
             condition.setBackgroundColor(white);
+            condition.setTextColor(black);
             bmiParentView.setBackgroundColor(black);
-            editor.putString(ThemeSettings.CUSTOM_THEME, ThemeSettings.DARK_THEME);
-            editor.putBoolean(ThemeSettings.SWITCH_STATUS, true);
-            editor.apply();
 
         }else{
 
@@ -213,14 +210,12 @@ public class BMIActivity extends AppCompatActivity {
             female.setBackgroundColor(bgwhite);
             txtFemale.setTextColor(black);
             result.setBackgroundColor(black);
+            result.setTextColor(white);
             condition.setBackgroundColor(black);
+            condition.setTextColor(white);
             bmiParentView.setBackgroundColor(bgwhite);
-            editor.putString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
-            editor.putBoolean(ThemeSettings.SWITCH_STATUS, false);
-            editor.apply();
         }
     }
-
 
     //BMI Calculation
     private void calculate(){

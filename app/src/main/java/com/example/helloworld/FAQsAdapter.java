@@ -15,12 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class FAQsAdapter extends RecyclerView.Adapter<FAQsAdapter.ViewHolder> {
-
+    // Adapter
     ArrayList<FAQsClass> arrayList;
     Context context;
 
     //arrow
     ImageView arrowIcon;
+
+    // PreferredReferences
+    ThemeSettings settings;
 
     public FAQsAdapter(ArrayList<FAQsClass> arrayList, Context context) {
         this.arrayList = arrayList;
@@ -57,7 +60,6 @@ public class FAQsAdapter extends RecyclerView.Adapter<FAQsAdapter.ViewHolder> {
                 }
             }
         });
-
 
     }
 

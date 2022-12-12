@@ -1,10 +1,12 @@
 package com.example.helloworld;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -44,6 +46,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     private TextView settingsTV, userTV, nightmodeTV, notificationsTV, securityTV, langtV, contactTV, aboutTV, FAQsTV, logOutTV;
 
     private ThemeSettings settings;
+
+    // for Notification
+
+    private SwitchCompat notifSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,12 +152,14 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         initWidgets();
         loadSharedPreferences();
-        initSwitchListener();
+        initThemeSwitchListener();
+        initNotifSwitchListener();
 
     }
 
     private void initWidgets() {
 
+        //Theme
         parentView = findViewById(R.id.parentView);
         themeSwitch = findViewById(R.id.themeSwitch);
         settingsTV = findViewById(R.id.settingsTV);
@@ -165,49 +173,56 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         FAQsTV = findViewById(R.id.FAQsTV);
         logOutTV = findViewById(R.id.logOutTV);
 
+        //Notification
+        notifSwitch = findViewById(R.id.notifSwitch);
+
     }
 
     private void loadSharedPreferences() {
 
         SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+
+        //Theme
         String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
-        boolean status = sharedPreferences.getBoolean(ThemeSettings.SWITCH_STATUS, false);
-        settings.setSwitchStatus(status);
         settings.setCustomTheme(theme);
-        themeSwitch.setChecked(settings.switchStatus);
-        updateView();
+        updateThemeView();
+
+        //Notif
+        String notif = sharedPreferences.getString(ThemeSettings.CUSTOM_NOTIF, ThemeSettings.NOTIF_ON);
+        settings.setCustomNotif(notif);
+        updateNotifView();
 
     }
 
-    private void initSwitchListener() {
+    private void initThemeSwitchListener() {
 
         themeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(isChecked){
+                    Toast.makeText(SettingsActivity.this, "Night Mode is turned on!", Toast.LENGTH_SHORT).show();
                     settings.setCustomTheme(ThemeSettings.DARK_THEME);
                 }else{
+                    Toast.makeText(SettingsActivity.this, "Night Mode is turned off!", Toast.LENGTH_SHORT).show();
                     settings.setCustomTheme(ThemeSettings.LIGHT_THEME);
                 }
 
                 SharedPreferences.Editor editor = getSharedPreferences(ThemeSettings.PREFERENCES, MODE_PRIVATE).edit();
                 editor.putString(ThemeSettings.CUSTOM_THEME, settings.getCustomTheme());
                 editor.apply();
-                updateView();
+                updateThemeView();
             }
         });
     }
 
-    private void updateView() {
-
-        SharedPreferences.Editor editor = getSharedPreferences(ThemeSettings.PREFERENCES, MODE_PRIVATE).edit();
+    private void updateThemeView() {
 
         final int black = ContextCompat.getColor(this, R.color.black);
         final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
         final int white = ContextCompat.getColor(this, R.color.light_white);
 
-        if(themeSwitch.isChecked()){
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
 
             settingsTV.setTextColor(white);
             userTV.setTextColor(white);
@@ -221,9 +236,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             logOutTV.setTextColor(white);
             parentView.setBackgroundColor(black);
             themeSwitch.setChecked(true);
-            editor.putString(ThemeSettings.CUSTOM_THEME, ThemeSettings.DARK_THEME);
-            editor.putBoolean(ThemeSettings.SWITCH_STATUS, true);
-            editor.apply();
 
 
         }else{
@@ -239,9 +251,37 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             logOutTV.setTextColor(black);
             parentView.setBackgroundColor(bgwhite);
             themeSwitch.setChecked(false);
-            editor.putString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
-            editor.putBoolean(ThemeSettings.SWITCH_STATUS, false);
-            editor.apply();
+        }
+    }
+
+    private void initNotifSwitchListener() {
+
+        notifSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+                    Toast.makeText(SettingsActivity.this, "Notification is turned on!", Toast.LENGTH_SHORT).show();
+                    settings.setCustomNotif(ThemeSettings.NOTIF_ON);
+                } else {
+                    Toast.makeText(SettingsActivity.this, "Notification is turned off!", Toast.LENGTH_SHORT).show();
+                    settings.setCustomNotif(ThemeSettings.NOTIF_OFF);
+                }
+
+                SharedPreferences.Editor editor = getSharedPreferences(ThemeSettings.PREFERENCES, MODE_PRIVATE).edit();
+                editor.putString(ThemeSettings.CUSTOM_NOTIF, settings.getCustomNotif());
+                editor.apply();
+                updateNotifView();
+            }
+        });
+    }
+    private void updateNotifView() {
+        if(settings.getCustomNotif().equals(ThemeSettings.NOTIF_ON)){
+
+            notifSwitch.setChecked(true);
+        }else{
+
+            notifSwitch.setChecked(false);
         }
     }
 
@@ -278,8 +318,25 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.settings_btnLogOut:
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(this, LoginActivity.class));
+                AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+                builder.setTitle("Confirm Logout");
+                builder.setMessage("Are you sure you want to log out?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(SettingsActivity.this, "Successfully Logged Out!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
                 break;
         }
     }

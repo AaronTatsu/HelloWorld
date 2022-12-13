@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/aboutUsParentView"
     android:background="@color/light_white"
     tools:context=".SettingsAboutUs"
     android:orientation="vertical">
@@ -51,7 +52,7 @@
                 android:layout_marginTop="30dp"
                 android:src="@drawable/logoimage"/>
             <TextView
-                android:id="@+id/LogoText"
+                android:id="@+id/logoText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TikTonic"
@@ -62,12 +63,14 @@
 
 
             <LinearLayout
+                android:id="@+id/aboutDescView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="20dp"
                 android:orientation="vertical"
+                android:background="@color/light_gray"
                 android:padding="15dp">
 
                 <TextView
@@ -101,6 +104,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/aboutVersionTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Version 1.0"

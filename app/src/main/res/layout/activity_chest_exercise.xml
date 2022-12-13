@@ -2,6 +2,7 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chestParentView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_white"
@@ -20,7 +21,9 @@
             android:layout_marginStart="10dp"
             android:padding="5dp"
             android:src="@drawable/back_arrow" />
+
         <TextView
+            android:id="@+id/chestTitleTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -80,23 +83,26 @@
                         android:textAllCaps="true"
                         android:textSize="15sp"/>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true">
+
                     <pl.droidsonroids.gif.GifImageView
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/pushup"
+                        android:layout_marginTop="15dp"
                         android:padding="8dp"
-                        android:layout_marginTop="15dp"/>
+                        android:src="@drawable/pushup" />
+
                     <ImageView
                         android:id="@+id/chest_btn_1"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:src="@drawable/right_arrow_icon"
                         android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"/>
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/right_arrow_icon" />
                 </LinearLayout>
             </RelativeLayout>
             <RelativeLayout

@@ -86,6 +86,7 @@ public class SettingsFrequentAsked extends AppCompatActivity {
     private void updateThemeView() {
 
         final int black = ContextCompat.getColor(this, R.color.black);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
         final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
         final int white = ContextCompat.getColor(this, R.color.white);
 
@@ -93,7 +94,7 @@ public class SettingsFrequentAsked extends AppCompatActivity {
 
             whiteFaqsTitle.setTextColor(white);
             logoText.setTextColor(white);
-            faqsParentView.setBackgroundColor(black);
+            faqsParentView.setBackgroundColor(bgblack);
 
         }else{
 

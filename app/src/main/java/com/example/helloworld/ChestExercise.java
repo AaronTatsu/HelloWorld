@@ -1,16 +1,27 @@
 package com.example.helloworld;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ChestExercise extends AppCompatActivity {
 
+    // Intent
     ImageView bckBtn, btn1, btn2, btn3;
+
+    //Theme SharedPreferences
+    private View chestParentView;
+    private TextView chestTitleTV;
+
+    private ThemeSettings settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +63,46 @@ public class ChestExercise extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Theme SharedPreferences
+        settings = (ThemeSettings) getApplication();
+
+        initWidgets();
+        loadSharedPreferences();
+        updateThemeView();
     }
+    private void initWidgets() {
+
+        chestParentView = findViewById(R.id.chestParentView);
+        chestTitleTV = findViewById(R.id.chestTitleTV);
+    }
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
+        settings.setCustomTheme(theme);
+
+    }
+    private void updateThemeView() {
+
+        final int black = ContextCompat.getColor(this, R.color.black);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
+        final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.light_white);
+
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
+
+            chestTitleTV.setTextColor(white);
+            chestParentView.setBackgroundColor(bgblack);
+
+        }else{
+
+            chestTitleTV.setTextColor(black);
+            chestParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Back Button Intent
     public void onBackPressed(){
         Intent intent = new Intent(getApplicationContext(), ExerciseActivity.class);
         startActivity(intent);

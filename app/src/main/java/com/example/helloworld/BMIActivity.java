@@ -58,7 +58,7 @@ public class BMIActivity extends AppCompatActivity {
         malelayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                male.setColorFilter(getResources().getColor(R.color.red));
+                male.setColorFilter(getResources().getColor(R.color.light_blue));
                 female.setColorFilter(getResources().getColor(R.color.black));
                 user="Male";
             }
@@ -66,7 +66,7 @@ public class BMIActivity extends AppCompatActivity {
         femalelayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                female.setColorFilter(getResources().getColor(R.color.red));
+                female.setColorFilter(getResources().getColor(R.color.light_blue));
                 male.setColorFilter(getResources().getColor(R.color.black));
                 user="Female";
             }
@@ -174,6 +174,7 @@ public class BMIActivity extends AppCompatActivity {
     private void updateThemeView() {
 
         final int black = ContextCompat.getColor(this, R.color.black);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
         final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
         final int white = ContextCompat.getColor(this, R.color.white);
 
@@ -195,7 +196,7 @@ public class BMIActivity extends AppCompatActivity {
             result.setTextColor(black);
             condition.setBackgroundColor(white);
             condition.setTextColor(black);
-            bmiParentView.setBackgroundColor(black);
+            bmiParentView.setBackgroundColor(bgblack);
 
         }else{
 

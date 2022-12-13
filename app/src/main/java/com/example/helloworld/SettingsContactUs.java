@@ -39,7 +39,7 @@ public class SettingsContactUs extends AppCompatActivity {
 
         initWidgets();
         loadSharedPreferences();
-        updateView();
+        updateThemeView();
     }
     private void initWidgets() {
 
@@ -64,9 +64,10 @@ public class SettingsContactUs extends AppCompatActivity {
 
     }
 
-    private void updateView() {
+    private void updateThemeView() {
 
         final int black = ContextCompat.getColor(this, R.color.black);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
         final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
         final int white = ContextCompat.getColor(this, R.color.light_white);
 
@@ -81,7 +82,7 @@ public class SettingsContactUs extends AppCompatActivity {
             contacttv5.setTextColor(white);
             contacttv6.setTextColor(white);
             contacttv7.setTextColor(white);
-            contactParentView.setBackgroundColor(black);
+            contactParentView.setBackgroundColor(bgblack);
 
         }else{
 

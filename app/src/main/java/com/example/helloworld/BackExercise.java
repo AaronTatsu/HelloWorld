@@ -1,16 +1,27 @@
 package com.example.helloworld;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class BackExercise extends AppCompatActivity {
 
+    // Intents
     ImageView bckBtn, btn1, btn2, btn3;
+
+    //Theme SharedPreferences
+    private View backParentView;
+    private TextView backTitleTV;
+
+    private ThemeSettings settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +63,46 @@ public class BackExercise extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Theme SharedPreferences
+        settings = (ThemeSettings) getApplication();
+
+        initWidgets();
+        loadSharedPreferences();
+        updateThemeView();
     }
+    private void initWidgets() {
+
+        backParentView = findViewById(R.id.backParentView);
+        backTitleTV = findViewById(R.id.backTitleTV);
+    }
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
+        settings.setCustomTheme(theme);
+
+    }
+    private void updateThemeView() {
+
+        final int black = ContextCompat.getColor(this, R.color.black);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
+        final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.light_white);
+
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
+
+            backTitleTV.setTextColor(white);
+            backParentView.setBackgroundColor(bgblack);
+
+        }else{
+
+            backTitleTV.setTextColor(black);
+            backParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Back Button Intent
     public void onBackPressed(){
         Intent intent = new Intent(getApplicationContext(), ExerciseActivity.class);
         startActivity(intent);

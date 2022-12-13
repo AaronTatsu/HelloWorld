@@ -70,7 +70,7 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="20dp"
                 android:orientation="vertical"
-                android:background="@color/grayest"
+                android:background="@color/light_gray"
                 android:padding="15dp">
 
             <androidx.recyclerview.widget.RecyclerView

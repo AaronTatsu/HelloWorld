@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/exerciseParentView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_white"
@@ -23,7 +24,9 @@
             android:layout_marginStart="10dp"
             android:padding="5dp"
             android:src="@drawable/back_arrow" />
+
         <TextView
+            android:id="@+id/exerciseTitleTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -46,13 +49,15 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/exerciseCatTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="Categories"
                 android:textAllCaps="true"
                 android:textSize="26sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"

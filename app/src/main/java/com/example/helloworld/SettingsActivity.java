@@ -219,6 +219,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     private void updateThemeView() {
 
         final int black = ContextCompat.getColor(this, R.color.black);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
         final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
         final int white = ContextCompat.getColor(this, R.color.light_white);
 
@@ -234,7 +235,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             aboutTV.setTextColor(white);
             FAQsTV.setTextColor(white);
             logOutTV.setTextColor(white);
-            parentView.setBackgroundColor(black);
+            parentView.setBackgroundColor(bgblack);
             themeSwitch.setChecked(true);
 
 

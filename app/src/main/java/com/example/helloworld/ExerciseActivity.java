@@ -2,20 +2,29 @@ package com.example.helloworld;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ExerciseActivity extends AppCompatActivity {
-
+    // Intents
     ImageView bckBtn;
     Button btn1, btn2, btn3, btn4, btn5, btn6;
+
+    // Theme SharedPreferences
+    private View exerciseParentView;
+    private TextView exerciseTitleTV, exerciseCatTV;
+
+    private ThemeSettings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +132,50 @@ public class ExerciseActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        // Theme SharedPreferences
+
+        settings = (ThemeSettings) getApplication();
+
+        initWidgets();
+        loadSharedPreferences();
+        updateThemeView();
     }
+    private void initWidgets() {
+
+        exerciseParentView = findViewById(R.id.exerciseParentView);
+        exerciseTitleTV = findViewById(R.id.exerciseTitleTV);
+        exerciseCatTV = findViewById(R.id.exerciseCatTV);
+    }
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
+        settings.setCustomTheme(theme);
+
+    }
+    private void updateThemeView() {
+
+        final int black = ContextCompat.getColor(this, R.color.black);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
+        final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.light_white);
+
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
+
+            exerciseTitleTV.setTextColor(white);
+            exerciseCatTV.setTextColor(white);
+            exerciseParentView.setBackgroundColor(bgblack);
+
+        }else{
+
+            exerciseTitleTV.setTextColor(black);
+            exerciseCatTV.setTextColor(black);
+            exerciseParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Back Button Intent
     public void onBackPressed(){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);

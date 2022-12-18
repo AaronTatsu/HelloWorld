@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.example.helloworld.Settings.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ExtraActivity extends AppCompatActivity {

@@ -17,10 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.helloworld.Settings.SettingsActivity;
+import com.example.helloworld.Settings.ThemeSettings;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.textfield.TextInputLayout;
-
-import org.w3c.dom.Text;
 
 public class BMIActivity extends AppCompatActivity {
 

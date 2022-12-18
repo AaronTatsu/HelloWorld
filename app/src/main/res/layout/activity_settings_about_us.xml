@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/aboutUsParentView"
     android:background="@color/light_white"
-    tools:context=".SettingsAboutUs"
+    tools:context=".Settings.SettingsAboutUs"
     android:orientation="vertical">
 
     <RelativeLayout

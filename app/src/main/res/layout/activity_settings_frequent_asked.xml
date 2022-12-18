@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/faqsParentView"
     android:background="@color/light_white"
-    tools:context=".SettingsFrequentAsked"
+    tools:context=".Settings.SettingsFrequentAsked"
     android:orientation="vertical">
 
     <RelativeLayout

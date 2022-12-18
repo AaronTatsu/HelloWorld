@@ -13,6 +13,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.helloworld.Exercise.ArmsExercise;
+import com.example.helloworld.Exercise.BackExercise;
+import com.example.helloworld.Exercise.ChestExercise;
+import com.example.helloworld.Settings.SettingsActivity;
+import com.example.helloworld.Settings.ThemeSettings;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ExerciseActivity extends AppCompatActivity {

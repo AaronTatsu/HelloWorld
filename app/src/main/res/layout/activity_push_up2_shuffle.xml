@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_white"
-    tools:context=".PushUp_2_Shuffle">
+    tools:context=".Exercise.PushUp_2_Shuffle">
     <RelativeLayout
         android:id="@+id/UpBar"
         android:layout_width="match_parent"

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.helloworld.Settings.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CalendarActivity extends AppCompatActivity {

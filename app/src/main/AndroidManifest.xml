@@ -3,7 +3,7 @@
     package="com.example.helloworld">
 
     <application
-        android:name=".ThemeSettings"
+        android:name=".Settings.ThemeSettings"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,23 +12,23 @@
         android:theme="@style/Theme.HelloWorld"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".SecurityActivity"
+            android:name=".Settings.SecurityActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".SettingsFrequentAsked"
+            android:name=".Settings.SettingsFrequentAsked"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".SettingsAboutUs"
+            android:name=".Settings.SettingsAboutUs"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".SettingsContactUs"
+            android:name=".Settings.SettingsContactUs"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".UserProfileActivity"
+            android:name=".Settings.UserProfileActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
@@ -48,71 +48,71 @@
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".BackExercise_3_text"
+            android:name=".Exercise.BackExercise_3_text"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".BackExercise_3"
+            android:name=".Exercise.BackExercise_3"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".BackExercise_2_text"
+            android:name=".Exercise.BackExercise_2_text"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".BackExercise_2"
+            android:name=".Exercise.BackExercise_2"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".BackExercise_1_text"
+            android:name=".Exercise.BackExercise_1_text"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".BackExercise_1"
+            android:name=".Exercise.BackExercise_1"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".BackExercise"
+            android:name=".Exercise.BackExercise"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ArmsExercise_3_text"
+            android:name=".Exercise.ArmsExercise_3_text"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ArmsExercise_3"
+            android:name=".Exercise.ArmsExercise_3"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ArmsExercise_2_text"
+            android:name=".Exercise.ArmsExercise_2_text"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ArmsExercise_2"
+            android:name=".Exercise.ArmsExercise_2"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ArmsExercise_1_text"
+            android:name=".Exercise.ArmsExercise_1_text"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ArmsExercise_1"
+            android:name=".Exercise.ArmsExercise_1"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ArmsExercise"
+            android:name=".Exercise.ArmsExercise"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".PushUp_3_Squeeze"
+            android:name=".Exercise.PushUp_3_Squeeze"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ChestExercise_3"
+            android:name=".Exercise.ChestExercise_3"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".PushUp_2_Shuffle"
+            android:name=".Exercise.PushUp_2_Shuffle"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
@@ -120,23 +120,23 @@
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".PushUp_1"
+            android:name=".Exercise.PushUp_1"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ChestExercise_2"
+            android:name=".Exercise.ChestExercise_2"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ChestExercise_1"
+            android:name=".Exercise.ChestExercise_1"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ChestExercise"
+            android:name=".Exercise.ChestExercise"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Settings.SettingsActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity

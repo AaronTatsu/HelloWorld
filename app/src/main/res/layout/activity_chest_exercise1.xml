@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_white"
-    tools:context=".ChestExercise_1">
+    tools:context=".Exercise.ChestExercise_1">
 
     <RelativeLayout
         android:id="@+id/UpBar"

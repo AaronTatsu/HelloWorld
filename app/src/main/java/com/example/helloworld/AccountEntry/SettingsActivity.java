@@ -1,4 +1,4 @@
-package com.example.helloworld.Settings;
+package com.example.helloworld.AccountEntry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -20,11 +20,18 @@ import android.widget.Toast;
 
 import com.example.helloworld.BMIActivity;
 import com.example.helloworld.ExerciseActivity;
-import com.example.helloworld.ExtraActivity;
 import com.example.helloworld.LoginActivity;
 import com.example.helloworld.MainActivity;
 import com.example.helloworld.NotAvailablePage;
 import com.example.helloworld.R;
+import com.example.helloworld.Settings.SecurityActivity;
+import com.example.helloworld.Settings.SettingsAboutUs;
+import com.example.helloworld.Settings.SettingsContactUs;
+import com.example.helloworld.Settings.SettingsFrequentAsked;
+import com.example.helloworld.Settings.ThemeSettings;
+import com.example.helloworld.Settings.User;
+import com.example.helloworld.Settings.UserProfileActivity;
+import com.example.helloworld.ToDoListActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -129,7 +136,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                         return true;
                     case R.id.nav_cal:
                         startActivity(new Intent(getApplicationContext()
-                                , ExtraActivity.class));
+                                , ToDoListActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_vid:

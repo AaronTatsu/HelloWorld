@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.helloworld.Settings.SettingsActivity;
+import com.example.helloworld.AccountEntry.SettingsActivity;
 import com.example.helloworld.Settings.ThemeSettings;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -35,13 +35,26 @@ public class BMIActivity extends AppCompatActivity {
 
     // Theme Function
     private View bmiParentView;
-    private TextView bmiCalculator, txtHeight, txtWeight, txtMale, txtFemale;
+    private TextView bmiTitleTV, bmiCalculator, txtHeight, txtWeight, txtMale, txtFemale;
     private ThemeSettings settings;
+
+    //Button Intent
+    ImageView bckBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmiactivity);
+
+        //BackButtonPressed
+        bckBtn = findViewById(R.id.back_pressed);
+        bckBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // BMI Function
         height=findViewById(R.id.Height);
@@ -121,7 +134,7 @@ public class BMIActivity extends AppCompatActivity {
                         return true;
                     case R.id.nav_cal:
                         startActivity(new Intent(getApplicationContext()
-                                , ExtraActivity.class));
+                                , ToDoListActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_vid:
@@ -154,6 +167,7 @@ public class BMIActivity extends AppCompatActivity {
     private void initWidgets() {
 
         bmiParentView = findViewById(R.id.bmiParentView);
+        bmiTitleTV = findViewById(R.id.bmiTitleTV);
         bmiCalculator = findViewById(R.id.bmiCalculator);
         txtHeight = findViewById(R.id.txtHeight);
         txtWeight = findViewById(R.id.txtWeight);
@@ -179,7 +193,7 @@ public class BMIActivity extends AppCompatActivity {
 
         if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
 
-
+            bmiTitleTV.setTextColor(white);
             bmiCalculator.setTextColor(white);
             txtHeight.setTextColor(white);
             height.setTextColor(white);
@@ -199,6 +213,7 @@ public class BMIActivity extends AppCompatActivity {
 
         }else{
 
+            bmiCalculator.setTextColor(black);
             bmiCalculator.setTextColor(black);
             txtHeight.setTextColor(black);
             height.setTextColor(black);
@@ -251,8 +266,9 @@ public class BMIActivity extends AppCompatActivity {
             }
 
     }
-    //BackPressed
-    public void onBackPressed() {
-        Toast.makeText(BMIActivity.this, "Press Home Button", Toast.LENGTH_SHORT).show();
+    // Back Button Intent
+    public void onBackPressed(){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 }

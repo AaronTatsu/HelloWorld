@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.example.helloworld.AccountEntry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.helloworld.LoginActivity;
+import com.example.helloworld.NotAvailablePage;
+import com.example.helloworld.R;
 import com.example.helloworld.Settings.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

@@ -3,38 +3,57 @@ package com.example.helloworld;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.helloworld.AccountEntry.SettingsActivity;
-import com.example.helloworld.Exercise.ArmsExercise;
-import com.example.helloworld.Exercise.BackExercise;
-import com.example.helloworld.Exercise.ChestExercise;
 import com.example.helloworld.Settings.ThemeSettings;
+import com.example.helloworld.ToDoList.AddNewTask;
+import com.example.helloworld.ToDoList.DialogCloseListener;
+import com.example.helloworld.ToDoList.RecyclerTouchHelper;
+import com.example.helloworld.ToDoList.ToDoAdapter;
+import com.example.helloworld.ToDoList.ToDoDBHandler;
+import com.example.helloworld.ToDoList.ToDoModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class ExerciseActivity extends AppCompatActivity {
-    // Intents
-    ImageView bckBtn;
-    Button btn1, btn2, btn3, btn4, btn5, btn6;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-    // Theme SharedPreferences
-    private View exerciseParentView;
-    private TextView exerciseTitleTV, exerciseCatTV;
+public class ToDoListActivity extends AppCompatActivity implements DialogCloseListener {
+
+    // Activity Variables
+    private RecyclerView taskRecyclerView;
+    private ToDoAdapter taskAdapter;
+    private FloatingActionButton fab;
+
+    private List<ToDoModel> taskList;
+    private ToDoDBHandler db;
+
+    //Theme Settings
+    private View notesParentView;
+    private TextView notesTitleTV, taskTextTV;
 
     private ThemeSettings settings;
+
+    // Back Button Intent
+    ImageView bckBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise);
+        setContentView(R.layout.activity_to_do_list);
 
         //BackButtonPressed
         bckBtn = findViewById(R.id.back_pressed);
@@ -45,65 +64,37 @@ public class ExerciseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //Categories Intent
-        btn1 = findViewById(R.id.cat_btn1);
-        btn1.setOnClickListener(new View.OnClickListener() {
+
+        // Main Activity
+        db = new ToDoDBHandler(this);
+        db.openDatabase();
+
+        taskList = new ArrayList<>();
+
+        taskRecyclerView = findViewById(R.id.taskRecyclerView);
+        taskRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        taskAdapter = new ToDoAdapter(db, this);
+        taskRecyclerView.setAdapter(taskAdapter);
+
+        fab = findViewById(R.id.fab);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RecyclerTouchHelper(taskAdapter));
+        itemTouchHelper.attachToRecyclerView(taskRecyclerView);
+
+        taskList = db.getAllTasks();
+        Collections.reverse(taskList);
+        taskAdapter.setTask(taskList);
+
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChestExercise.class);
-                startActivity(intent);
+                AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
             }
         });
 
-        btn2 = findViewById(R.id.cat_btn2);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ArmsExercise.class);
-                startActivity(intent);
-            }
-        });
+        //Bottom Navigation Intent
+        BottomNavigationView bottomNavigationView = findViewById(R.id.BottomNavigationView);
 
-        btn3 = findViewById(R.id.cat_btn3);
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BackExercise.class);
-                startActivity(intent);
-            }
-        });
-
-        btn4 = findViewById(R.id.cat_btn4);
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
-                startActivity(intent);
-            }
-        });
-
-        btn5 = findViewById(R.id.cat_btn5);
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
-                startActivity(intent);
-            }
-        });
-
-        btn6 = findViewById(R.id.cat_btn6);
-        btn6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
-                startActivity(intent);
-            }
-        });
-
-        //Button Navigation
-        BottomNavigationView bottomNavigationView = findViewById(R.id.BottonNavigationView);
-
-        bottomNavigationView.setSelectedItemId(R.id.nav_exe);
+        bottomNavigationView.setSelectedItemId(R.id.nav_cal);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -138,46 +129,57 @@ public class ExerciseActivity extends AppCompatActivity {
             }
         });
 
-        // Theme SharedPreferences
-
+        //Theme
         settings = (ThemeSettings) getApplication();
 
         initWidgets();
         loadSharedPreferences();
-        updateThemeView();
     }
+
     private void initWidgets() {
 
-        exerciseParentView = findViewById(R.id.exerciseParentView);
-        exerciseTitleTV = findViewById(R.id.exerciseTitleTV);
-        exerciseCatTV = findViewById(R.id.exerciseCatTV);
+        notesParentView = findViewById(R.id.notesParentView);
+        notesTitleTV = findViewById(R.id.notesTitleTV);
+        taskTextTV = findViewById(R.id.taskTextTV);
+
     }
+
     private void loadSharedPreferences() {
 
         SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
         String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
         settings.setCustomTheme(theme);
-
+        updateThemeView();
     }
+
     private void updateThemeView() {
 
         final int black = ContextCompat.getColor(this, R.color.black);
         final int bgblack = ContextCompat.getColor(this, R.color.light_black);
         final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
-        final int white = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.white);
 
         if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
 
-            exerciseTitleTV.setTextColor(white);
-            exerciseCatTV.setTextColor(white);
-            exerciseParentView.setBackgroundColor(bgblack);
+            notesTitleTV.setTextColor(white);
+            taskTextTV.setTextColor(white);
+            notesParentView.setBackgroundColor(bgblack);
 
         }else{
 
-            exerciseTitleTV.setTextColor(black);
-            exerciseCatTV.setTextColor(black);
-            exerciseParentView.setBackgroundColor(bgwhite);
+            notesTitleTV.setTextColor(black);
+            taskTextTV.setTextColor(black);
+            notesParentView.setBackgroundColor(bgwhite);
         }
+    }
+
+    // Main Activity
+    @Override
+    public void handleDialogClose(DialogInterface dialog){
+        taskList = db.getAllTasks();
+        Collections.reverse(taskList);
+        taskAdapter.setTask(taskList);
+        taskAdapter.notifyDataSetChanged();
     }
 
     // Back Button Intent

@@ -7,24 +7,33 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.helloworld.Settings.SettingsActivity;
+import com.example.helloworld.AccountEntry.SettingsActivity;
+import com.example.helloworld.Exercise.ChestExercise;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Main Activity Variables
     private ViewPager2 viewPager2;
     private List<Video> videoList;
     private VideoAdapter adapter;
+
+    // Intent
+    TextView augmentedReality, videoScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // View Pager Functions
         videoList = new ArrayList<>();
         viewPager2 = findViewById(R.id.viewPager2);
 
@@ -35,6 +44,28 @@ public class MainActivity extends AppCompatActivity {
         adapter = new VideoAdapter(videoList);
         viewPager2.setAdapter(adapter);
 
+        // Intent
+
+        augmentedReality = findViewById(R.id.augmentedReality);
+        augmentedReality.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
+                startActivity(intent);
+            }
+        });
+
+        videoScreen = findViewById(R.id.videoScreen);
+        videoScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        // Bottom Navigation Intent
         BottomNavigationView bottomNavigationView = findViewById(R.id.BottonNavigationView);
 
         bottomNavigationView.setSelectedItemId(R.id.nav_vid);
@@ -49,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.nav_cal:
                         startActivity(new Intent(getApplicationContext()
-                                , ExtraActivity.class));
+                                , ToDoListActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_vid:

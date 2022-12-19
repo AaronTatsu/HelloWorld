@@ -6,6 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <View
+        android:id="@+id/textDivider"
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@color/white"
+        android:elevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:id="@+id/videoScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Video Screen"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:elevation="25dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@+id/textDivider"
+        app:layout_constraintTop_toTopOf="@+id/textDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/textDivider"/>
+
+    <TextView
+        android:id="@+id/augmentedReality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Augmented"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:elevation="25dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/textDivider"
+        app:layout_constraintTop_toTopOf="@+id/textDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/textDivider"/>
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager2"
         android:layout_width="0dp"

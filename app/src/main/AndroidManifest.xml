@@ -12,6 +12,10 @@
         android:theme="@style/Theme.HelloWorld"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ToDoListActivity"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
             android:name=".Settings.SecurityActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />
@@ -32,19 +36,15 @@
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".AccountEntry.ForgotPasswordActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".AccountEntry.RegisterActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false"
-            android:theme="@style/FullScreen" />
-        <activity
-            android:name=".ExtraActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
@@ -136,15 +136,11 @@
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".Settings.SettingsActivity"
+            android:name=".AccountEntry.SettingsActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
             android:name=".ExerciseActivity"
-            android:exported="false"
-            android:theme="@style/FullScreen" />
-        <activity
-            android:name=".CalendarActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
@@ -155,7 +151,7 @@
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".AccountEntry.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

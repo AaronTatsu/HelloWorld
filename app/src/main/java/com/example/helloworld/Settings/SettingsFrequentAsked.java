@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.helloworld.R;
+import com.example.helloworld.AccountEntry.SettingsActivity;
 
 import java.util.ArrayList;
 

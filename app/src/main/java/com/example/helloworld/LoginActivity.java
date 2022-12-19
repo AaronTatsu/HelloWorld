@@ -16,6 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.helloworld.AccountEntry.ForgotPasswordActivity;
+import com.example.helloworld.AccountEntry.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -71,11 +73,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.register:
-                startActivity(new Intent(this,RegisterActivity.class));
+                startActivity(new Intent(this, RegisterActivity.class));
                 break;
 
             case R.id.forgotPass:
-                startActivity(new Intent(this,ForgotPasswordActivity.class));
+                startActivity(new Intent(this, ForgotPasswordActivity.class));
                 break;
 
             case R.id.btnlogin:

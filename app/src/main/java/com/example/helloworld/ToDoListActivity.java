@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.helloworld.AccountEntry.SettingsActivity;
 import com.example.helloworld.Settings.ThemeSettings;
 import com.example.helloworld.ToDoList.AddNewTask;
 import com.example.helloworld.ToDoList.DialogCloseListener;

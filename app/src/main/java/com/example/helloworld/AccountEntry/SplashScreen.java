@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import com.example.helloworld.LoginActivity;
 import com.example.helloworld.R;
 
 public class SplashScreen extends AppCompatActivity {

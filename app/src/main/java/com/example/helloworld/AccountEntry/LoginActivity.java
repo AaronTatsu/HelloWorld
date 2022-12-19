@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.example.helloworld.AccountEntry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,8 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.helloworld.AccountEntry.ForgotPasswordActivity;
-import com.example.helloworld.AccountEntry.RegisterActivity;
+import com.example.helloworld.MainActivity;
+import com.example.helloworld.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

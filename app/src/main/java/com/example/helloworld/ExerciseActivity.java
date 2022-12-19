@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.helloworld.AccountEntry.SettingsActivity;
 import com.example.helloworld.Exercise.ArmsExercise;
 import com.example.helloworld.Exercise.BackExercise;
 import com.example.helloworld.Exercise.ChestExercise;

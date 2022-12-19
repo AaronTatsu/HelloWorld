@@ -17,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.helloworld.AccountEntry.SettingsActivity;
 import com.example.helloworld.Settings.ThemeSettings;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

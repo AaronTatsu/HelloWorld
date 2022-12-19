@@ -17,7 +17,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.helloworld.LoginActivity;
 import com.example.helloworld.NotAvailablePage;
 import com.example.helloworld.R;
 import com.example.helloworld.Settings.User;

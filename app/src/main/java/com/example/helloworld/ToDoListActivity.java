@@ -146,9 +146,22 @@ public class ToDoListActivity extends AppCompatActivity implements DialogCloseLi
     private void loadSharedPreferences() {
 
         SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
-        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
+
+        //Theme
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.CUSTOM_THEME);
         settings.setCustomTheme(theme);
         updateThemeView();
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
+        settings.setCustomSize(size);
+        updateSizeView();
+
     }
 
     private void updateThemeView() {
@@ -169,6 +182,46 @@ public class ToDoListActivity extends AppCompatActivity implements DialogCloseLi
             notesTitleTV.setTextColor(black);
             taskTextTV.setTextColor(black);
             notesParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            notesTitleTV.setText("Check Notes");
+            taskTextTV.setText("Tasks");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            notesTitleTV.setText("Suriin ang mga Tala");
+            taskTextTV.setText("Mga Gawain");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            notesTitleTV.setTextSize(16);
+            taskTextTV.setTextSize(30);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            notesTitleTV.setTextSize(18);
+            taskTextTV.setTextSize(32);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            notesTitleTV.setTextSize(20);
+            taskTextTV.setTextSize(34);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+
         }
     }
 

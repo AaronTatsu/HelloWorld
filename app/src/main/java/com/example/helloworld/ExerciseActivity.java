@@ -26,7 +26,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
     // Theme SharedPreferences
     private View exerciseParentView;
-    private TextView exerciseTitleTV, exerciseCatTV;
+    private TextView exerciseTitleTV, exerciseCatTV, chestExeTV1, armsExeTV1, backExeTV1, coreExeTV1, legsExeTV1, fullExeTV1;
 
     private ThemeSettings settings;
 
@@ -150,14 +150,35 @@ public class ExerciseActivity extends AppCompatActivity {
         exerciseParentView = findViewById(R.id.exerciseParentView);
         exerciseTitleTV = findViewById(R.id.exerciseTitleTV);
         exerciseCatTV = findViewById(R.id.exerciseCatTV);
+        chestExeTV1 = findViewById(R.id.chestExeTV1);
+        armsExeTV1 = findViewById(R.id.armsExeTV1);
+        backExeTV1 = findViewById(R.id.backExeTV1);
+        coreExeTV1 = findViewById(R.id.coreExeTV1);
+        legsExeTV1 = findViewById(R.id.legsExeTV1);
+        fullExeTV1 = findViewById(R.id.fullExeTV1);
     }
+
     private void loadSharedPreferences() {
 
         SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
-        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
+
+        //Theme
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.CUSTOM_THEME);
         settings.setCustomTheme(theme);
+        updateThemeView();
+
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
+        settings.setCustomSize(size);
 
     }
+
     private void updateThemeView() {
 
         final int black = ContextCompat.getColor(this, R.color.black);
@@ -176,6 +197,35 @@ public class ExerciseActivity extends AppCompatActivity {
             exerciseTitleTV.setTextColor(black);
             exerciseCatTV.setTextColor(black);
             exerciseParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            exerciseTitleTV.setText("Exercise");
+            exerciseCatTV.setText("Categories");
+            chestExeTV1.setText("Chest Exercise");
+            armsExeTV1.setText("Arms Exercise");
+            backExeTV1.setText("Back Exercise");
+            coreExeTV1.setText("Core &amp; Abdominal Exercise");
+            legsExeTV1.setText("Legs Exercise");
+            fullExeTV1.setText("Full Body Exercise");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            exerciseTitleTV.setText("Exercise");
+            exerciseCatTV.setText("Categories");
+            chestExeTV1.setText("Chest Exercise");
+            armsExeTV1.setText("Arms Exercise");
+            backExeTV1.setText("Back Exercise");
+            coreExeTV1.setText("Core &amp; Abdominal Exercise");
+            legsExeTV1.setText("Legs Exercise");
+            fullExeTV1.setText("Full Body Exercise");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
         }
     }
 

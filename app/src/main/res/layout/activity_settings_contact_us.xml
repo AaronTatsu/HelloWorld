@@ -30,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="Contact Us"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -78,7 +79,7 @@
                     android:text="Connect with us!"
                     android:textAllCaps="true"
                     android:textStyle="bold"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:layout_marginBottom="10dp"/>
 
@@ -101,8 +102,9 @@
                         android:layout_marginStart="15dp"
                         android:layout_toEndOf="@id/contactEmailIcon"
                         android:text="tiktonic.support@gmail.com"
+                        android:gravity="center"
                         android:textColor="@color/black"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
@@ -131,7 +133,7 @@
                         android:layout_toEndOf="@id/contactPhoneIcon"
                         android:text="09285435045"
                         android:textColor="@color/black"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
@@ -160,7 +162,7 @@
                         android:layout_toEndOf="@id/contactLinkIcon"
                         android:text="tiktonic.support.com.ph"
                         android:textColor="@color/black"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
@@ -189,7 +191,7 @@
                         android:layout_toEndOf="@id/contactYoutubeIcon"
                         android:text="TikTonic"
                         android:textColor="@color/black"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
@@ -218,7 +220,7 @@
                         android:layout_toEndOf="@id/contactFacebookIcon"
                         android:text="TikTonic"
                         android:textColor="@color/black"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
@@ -247,7 +249,7 @@
                         android:layout_toEndOf="@id/contactInstagramIcon"
                         android:text="TikTonic"
                         android:textColor="@color/black"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 

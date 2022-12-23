@@ -30,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="Settings"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -77,6 +78,7 @@
                 android:background="@drawable/rounded_corner_black"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
+                android:gravity="center"
                 android:text="Edit Profile"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -111,8 +113,10 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
                         android:layout_toEndOf="@id/NightModeIcon"
+                        android:gravity="center"
                         android:text="Dark Mode"
                         android:textColor="@color/black"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -147,8 +151,10 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
                         android:layout_toEndOf="@id/Notification"
+                        android:gravity="center"
                         android:text="Notifications"
                         android:textColor="@color/black"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -195,6 +201,8 @@
                         android:layout_marginStart="15dp"
                         android:layout_toEndOf="@id/Security"
                         android:text="Security &amp; Privacy"
+                        android:textSize="14sp"
+                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -228,11 +236,48 @@
                         android:layout_marginStart="15dp"
                         android:layout_toEndOf="@id/LanguageEdit"
                         android:text="Languages"
+                        android:textSize="14sp"
+                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/settings_btnLang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/right_arrow_icon" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/sizeEdit"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/round_back_textsize"
+                        android:padding="7dp"
+                        android:src="@drawable/textsize" />
+
+                    <TextView
+                        android:id="@+id/sizeTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/sizeEdit"
+                        android:text="Text Size"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/settings_btnSize"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -259,7 +304,7 @@
                         android:id="@+id/SendMessage"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/round_back_textsize"
+                        android:background="@drawable/round_back_security"
                         android:padding="9dp"
                         android:src="@drawable/message" />
 
@@ -271,6 +316,8 @@
                         android:layout_marginStart="15dp"
                         android:layout_toEndOf="@id/SendMessage"
                         android:text="Contact Us"
+                        android:textSize="14sp"
+                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -304,6 +351,8 @@
                         android:layout_marginStart="15dp"
                         android:layout_toEndOf="@id/AboutUs"
                         android:text="About Us"
+                        android:textSize="14sp"
+                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -337,6 +386,8 @@
                         android:layout_marginStart="15dp"
                         android:layout_toEndOf="@id/FAQs"
                         android:text="FAQs"
+                        android:textSize="14sp"
+                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -370,6 +421,8 @@
                         android:layout_marginStart="15dp"
                         android:layout_toEndOf="@id/TextSize"
                         android:text="Log Out"
+                        android:textSize="14sp"
+                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 

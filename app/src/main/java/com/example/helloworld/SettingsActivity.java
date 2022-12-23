@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.L;
 import com.example.helloworld.AccountEntry.LoginActivity;
 import com.example.helloworld.Settings.SecurityActivity;
 import com.example.helloworld.Settings.SettingsAboutUs;
@@ -44,18 +45,16 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     // For Intent
     Button profbtn;
-    ImageView bckBtn, btn1, btn2, btn3, btn4, btn5, btn6;
+    ImageView bckBtn, btn1, btn2, btn3, btn4, btn5, btn6, btn7;
 
     // For Theme
-
     private SwitchCompat themeSwitch;
     private View parentView;
-    private TextView settingsTV, userTV, nightmodeTV, notificationsTV, securityTV, langtV, contactTV, aboutTV, FAQsTV, logOutTV;
+    private TextView settingsTV, userTV, nightmodeTV, notificationsTV, securityTV, langtV, sizeTV, contactTV, aboutTV, FAQsTV, logOutTV;
 
     private ThemeSettings settings;
 
-    // for Notification
-
+    // For Notification
     private SwitchCompat notifSwitch;
 
     @Override
@@ -103,17 +102,20 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         btn2 = (ImageView) findViewById(R.id.settings_btnLang);
         btn2.setOnClickListener(this);
 
-        btn3 = (ImageView) findViewById(R.id.settings_btnMessage);
+        btn3 = (ImageView) findViewById(R.id.settings_btnSize);
         btn3.setOnClickListener(this);
 
-        btn4 = (ImageView) findViewById(R.id.settings_btnAbout);
+        btn4 = (ImageView) findViewById(R.id.settings_btnMessage);
         btn4.setOnClickListener(this);
 
-        btn5 = (ImageView) findViewById(R.id.settings_btnFaqs);
+        btn5 = (ImageView) findViewById(R.id.settings_btnAbout);
         btn5.setOnClickListener(this);
 
-        btn6 = (ImageView) findViewById(R.id.settings_btnLogOut);
+        btn6 = (ImageView) findViewById(R.id.settings_btnFaqs);
         btn6.setOnClickListener(this);
+
+        btn7 = (ImageView) findViewById(R.id.settings_btnLogOut);
+        btn7.setOnClickListener(this);
 
         //Bottom Navigation Intent
         BottomNavigationView bottomNavigationView = findViewById(R.id.BottonNavigationView);
@@ -161,6 +163,9 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         loadSharedPreferences();
         initThemeSwitchListener();
         initNotifSwitchListener();
+        updateThemeView();
+        updateLangView();
+        updateSizeView();
 
     }
 
@@ -175,6 +180,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         notificationsTV = findViewById(R.id.notificationTV);
         securityTV = findViewById(R.id.securityTV);
         langtV = findViewById(R.id.langTV);
+        sizeTV = findViewById(R.id.sizeTV);
         contactTV = findViewById(R.id.contactTV);
         aboutTV = findViewById(R.id.aboutTV);
         FAQsTV = findViewById(R.id.FAQsTV);
@@ -198,6 +204,16 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         String notif = sharedPreferences.getString(ThemeSettings.CUSTOM_NOTIF, ThemeSettings.NOTIF_ON);
         settings.setCustomNotif(notif);
         updateNotifView();
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.ENG_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.MEDIUM_SIZE);
+        settings.setCustomSize(size);
+        updateSizeView();
 
     }
 
@@ -238,6 +254,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             notificationsTV.setTextColor(white);
             securityTV.setTextColor(white);
             langtV.setTextColor(white);
+            sizeTV.setTextColor(white);
             contactTV.setTextColor(white);
             aboutTV.setTextColor(white);
             FAQsTV.setTextColor(white);
@@ -252,6 +269,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             notificationsTV.setTextColor(black);
             securityTV.setTextColor(black);
             langtV.setTextColor(black);
+            sizeTV.setTextColor(black);
             contactTV.setTextColor(black);
             aboutTV.setTextColor(black);
             FAQsTV.setTextColor(black);
@@ -309,7 +327,11 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.settings_btnLang:
-                startActivity(new Intent(this, NotAvailablePage.class));
+                showChangeLanguageDialog();
+                break;
+
+            case R.id.settings_btnSize:
+                showChangeSizeDialog();
                 break;
 
             case R.id.settings_btnMessage:
@@ -345,6 +367,161 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 });
                 builder.show();
                 break;
+        }
+    }
+
+    // Language Settings
+    private void showChangeLanguageDialog() {
+        final String[] listItems = {"English", "Filipino"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+        builder.setTitle("Choose Language...");
+        builder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int lang) {
+                if(lang == 0){
+                    Toast.makeText(SettingsActivity.this, "English Language Selected!", Toast.LENGTH_SHORT).show();
+                    settings.setCustomLang(ThemeSettings.ENG_LANG);
+                    dialog.dismiss();
+                }else if (lang == 1){
+                    Toast.makeText(SettingsActivity.this, "Filipino Language Selected!", Toast.LENGTH_SHORT).show();
+                    settings.setCustomLang(ThemeSettings.TAG_LANG);
+                    dialog.dismiss();
+                }
+
+                SharedPreferences.Editor editor = getSharedPreferences(ThemeSettings.PREFERENCES, MODE_PRIVATE).edit();
+                editor.putString(ThemeSettings.CUSTOM_LANG, settings.getCustomLang());
+                editor.apply();
+                updateLangView();
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            settingsTV.setText("Settings");
+            profbtn.setText("Edit Profile");
+            nightmodeTV.setText("Dark Mode");
+            notificationsTV.setText("Notifications");
+            securityTV.setText("Security and Privacy");
+            langtV.setText("Languages");
+            sizeTV.setText("Text Size");
+            contactTV.setText("Contact Us");
+            aboutTV.setText("About Us");
+            FAQsTV.setText("FAQs");
+            logOutTV.setText("Log Out");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            settingsTV.setText("Mga Setting");
+            profbtn.setText("Porpolyo'y Baguhin");
+            nightmodeTV.setText("Gawing Gabi");
+            notificationsTV.setText("Abiso");
+            securityTV.setText("Seguridad");
+            langtV.setText("Wika");
+            sizeTV.setText("Laki ng Teksto");
+            contactTV.setText("Kontak");
+            aboutTV.setText("Info ng gumawa");
+            FAQsTV.setText("Mga Madalas na Katanungan");
+            logOutTV.setText("Pag Alis");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+
+    // Text Size Settings
+    private void showChangeSizeDialog() {
+        final String[] listItems = {"Small", "Medium", "Large"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+        builder.setTitle("Choose Text Size...");
+        builder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int size) {
+                if(size == 0){
+                    Toast.makeText(SettingsActivity.this, "Small Text Size Selected!", Toast.LENGTH_SHORT).show();
+                    settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+                    dialog.dismiss();
+                }
+                else if (size == 1){
+                    Toast.makeText(SettingsActivity.this, "Medium Text Size Selected!", Toast.LENGTH_SHORT).show();
+                    settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+                    dialog.dismiss();
+                }else if (size == 2){
+                    Toast.makeText(SettingsActivity.this, "Large Text Size Selected!", Toast.LENGTH_SHORT).show();
+                    settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+                    dialog.dismiss();
+                }
+
+                SharedPreferences.Editor editor = getSharedPreferences(ThemeSettings.PREFERENCES, MODE_PRIVATE).edit();
+                editor.putString(ThemeSettings.CUSTOM_SIZE, settings.getCustomSize());
+                editor.apply();
+                updateSizeView();
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            settingsTV.setTextSize(16);
+            profbtn.setTextSize(13);
+            nightmodeTV.setTextSize(12);
+            notificationsTV.setTextSize(12);
+            securityTV.setTextSize(12);
+            langtV.setTextSize(12);
+            sizeTV.setTextSize(12);
+            contactTV.setTextSize(12);
+            aboutTV.setTextSize(12);
+            FAQsTV.setTextSize(12);
+            logOutTV.setTextSize(12);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            settingsTV.setTextSize(18);
+            profbtn.setTextSize(15);
+            nightmodeTV.setTextSize(14);
+            notificationsTV.setTextSize(14);
+            securityTV.setTextSize(14);
+            langtV.setTextSize(14);
+            sizeTV.setTextSize(14);
+            contactTV.setTextSize(14);
+            aboutTV.setTextSize(14);
+            FAQsTV.setTextSize(14);
+            logOutTV.setTextSize(14);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            settingsTV.setTextSize(20);
+            profbtn.setTextSize(17);
+            nightmodeTV.setTextSize(16);
+            notificationsTV.setTextSize(16);
+            securityTV.setTextSize(16);
+            langtV.setTextSize(16);
+            sizeTV.setTextSize(16);
+            contactTV.setTextSize(16);
+            aboutTV.setTextSize(16);
+            FAQsTV.setTextSize(16);
+            logOutTV.setTextSize(16);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+
         }
     }
 

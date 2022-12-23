@@ -65,6 +65,7 @@
                 android:background="@drawable/background_exercise_1">
 
                 <TextView
+                    android:id="@+id/chestExeTV1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
@@ -104,6 +105,7 @@
                     android:src="@drawable/arms" />
 
                 <TextView
+                    android:id="@+id/armsExeTV1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -132,6 +134,7 @@
                 android:background="@drawable/background_exercise_1">
 
                 <TextView
+                    android:id="@+id/backExeTV1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
@@ -171,6 +174,7 @@
                     android:src="@drawable/abdominal" />
 
                 <TextView
+                    android:id="@+id/coreExeTV1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -199,6 +203,7 @@
                 android:background="@drawable/background_exercise_1">
 
                 <TextView
+                    android:id="@+id/legsExeTV1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
@@ -238,6 +243,7 @@
                     android:src="@drawable/ic_male_body" />
 
                 <TextView
+                    android:id="@+id/fullExeTV1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

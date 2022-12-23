@@ -65,7 +65,7 @@ public class SettingsFrequentAsked extends AppCompatActivity {
         settings = (ThemeSettings) getApplication();
 
         initWidgets();
-        loadSharedPreferences();
+        updateThemeView();
 
     }
     private void initWidgets() {
@@ -77,13 +77,7 @@ public class SettingsFrequentAsked extends AppCompatActivity {
         logoText = findViewById(R.id.logoText);
 
     }
-    private void loadSharedPreferences() {
 
-        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
-        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
-        settings.setCustomTheme(theme);
-        updateThemeView();
-    }
     private void updateThemeView() {
 
         final int black = ContextCompat.getColor(this, R.color.black);

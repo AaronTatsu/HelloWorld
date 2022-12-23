@@ -163,7 +163,29 @@ public class BMIActivity extends AppCompatActivity {
         loadSharedPreferences();
     }
 
-    private void initWidgets() {
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+
+        //Theme
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.CUSTOM_THEME);
+        settings.setCustomTheme(theme);
+        updateThemeView();
+
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
+        settings.setCustomSize(size);
+        updateSizeView();
+
+    }
+
+        private void initWidgets() {
 
         bmiParentView = findViewById(R.id.bmiParentView);
         bmiTitleTV = findViewById(R.id.bmiTitleTV);
@@ -175,14 +197,7 @@ public class BMIActivity extends AppCompatActivity {
 
     }
 
-    private void loadSharedPreferences() {
-
-        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
-        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
-        settings.setCustomTheme(theme);
-        updateThemeView();
-    }
-
+    // Theme View
     private void updateThemeView() {
 
         final int black = ContextCompat.getColor(this, R.color.black);
@@ -228,6 +243,76 @@ public class BMIActivity extends AppCompatActivity {
             condition.setBackgroundColor(black);
             condition.setTextColor(white);
             bmiParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            bmiTitleTV.setText("Body Mass Index");
+            bmiCalculator.setText("BMI Calculator");
+            txtHeight.setText("Height");
+            txtWeight.setText("Weight");
+            txtMale.setText("Male");
+            txtFemale.setText("Female");
+            btncal.setText("Calculate");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            bmiTitleTV.setText("Indeks ng Masa ng Katawan");
+            bmiCalculator.setText("Kalkulator ng BMI");
+            txtHeight.setText("Tangkad");
+            txtWeight.setText("Lapad");
+            txtMale.setText("Lalaki");
+            txtFemale.setText("Babae");
+            btncal.setText("Kalkulahin");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            bmiTitleTV.setTextSize(16);
+            bmiCalculator.setTextSize(23);
+            txtHeight.setTextSize(13);
+            txtWeight.setTextSize(13);
+            height.setTextSize(13);
+            weight.setTextSize(13);
+            txtMale.setTextSize(13);
+            txtFemale.setTextSize(13);
+            btncal.setTextSize(18);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            bmiTitleTV.setTextSize(18);
+            bmiCalculator.setTextSize(25);
+            txtHeight.setTextSize(15);
+            txtWeight.setTextSize(15);
+            height.setTextSize(15);
+            weight.setTextSize(15);
+            txtMale.setTextSize(15);
+            txtFemale.setTextSize(15);
+            btncal.setTextSize(20);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            bmiTitleTV.setTextSize(20);
+            bmiCalculator.setTextSize(27);
+            txtHeight.setTextSize(17);
+            txtWeight.setTextSize(17);
+            height.setTextSize(17);
+            weight.setTextSize(17);
+            txtMale.setTextSize(17);
+            txtFemale.setTextSize(17);
+            btncal.setTextSize(22);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+
         }
     }
 

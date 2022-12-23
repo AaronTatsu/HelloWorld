@@ -39,8 +39,9 @@ public class SettingsContactUs extends AppCompatActivity {
         settings = (ThemeSettings) getApplication();
 
         initWidgets();
-        loadSharedPreferences();
         updateThemeView();
+        updateLangView();
+        updateSizeView();
     }
     private void initWidgets() {
 
@@ -54,14 +55,6 @@ public class SettingsContactUs extends AppCompatActivity {
         contacttv5 = findViewById(R.id.contacttv5);
         contacttv6 = findViewById(R.id.contacttv6);
         contacttv7 = findViewById(R.id.contacttv7);
-
-    }
-
-    private void loadSharedPreferences() {
-
-        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
-        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
-        settings.setCustomTheme(theme);
 
     }
 
@@ -99,6 +92,58 @@ public class SettingsContactUs extends AppCompatActivity {
             contactParentView.setBackgroundColor(bgwhite);
         }
     }
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            contactTitleTv.setText("Contact Us");
+            contacttv1.setText("Connect With Us");
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            contactTitleTv.setText("Kontak");
+            contacttv1.setText("Kumonekta Sa Amin");
+
+        }
+    }
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            contactTitleTv.setTextSize(16);
+            contacttv1.setTextSize(18);
+            contacttv2.setTextSize(13);
+            contacttv3.setTextSize(13);
+            contacttv4.setTextSize(13);
+            contacttv5.setTextSize(13);
+            contacttv6.setTextSize(13);
+            contacttv7.setTextSize(13);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            contactTitleTv.setTextSize(18);
+            contacttv1.setTextSize(20);
+            contacttv2.setTextSize(15);
+            contacttv3.setTextSize(15);
+            contacttv4.setTextSize(15);
+            contacttv5.setTextSize(15);
+            contacttv6.setTextSize(15);
+            contacttv7.setTextSize(15);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            contactTitleTv.setTextSize(20);
+            contacttv1.setTextSize(22);
+            contacttv2.setTextSize(17);
+            contacttv3.setTextSize(17);
+            contacttv4.setTextSize(17);
+            contacttv5.setTextSize(17);
+            contacttv6.setTextSize(17);
+            contacttv7.setTextSize(17);
+
+        }
+    }
+
 
     //Back Button Intent
     public void onBackPressed(){

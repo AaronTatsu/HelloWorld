@@ -37,9 +37,9 @@
 
     <TextView
         android:id="@+id/bmiCalculator"
-        android:layout_below="@+id/bmiLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/bmiLayout"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Height"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:textStyle="normal" />
 
@@ -70,7 +70,7 @@
             android:layout_height="50dp"
             android:hint="cm"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="normal"
             android:paddingLeft="10dp"
             android:textColorHint="@color/black"
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Weight"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:textStyle="normal"/>
         <EditText
@@ -89,7 +89,7 @@
             android:layout_height="50dp"
             android:hint="kg"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="normal"
             android:paddingLeft="10dp"
             android:textColorHint="@color/black"
@@ -112,7 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Male"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textStyle="normal"/>
@@ -136,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Female"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textStyle="normal"/>
@@ -163,7 +163,7 @@
         android:background="@color/light_blue"
         android:text="Calculate"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <TextView

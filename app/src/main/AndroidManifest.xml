@@ -104,7 +104,7 @@
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".Exercise.PushUp_3_Squeeze"
+            android:name=".Exercise.ChestExercise_3_text"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
@@ -112,7 +112,7 @@
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".Exercise.PushUp_2_Shuffle"
+            android:name=".Exercise.ChestExercise_2_text"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
@@ -120,7 +120,7 @@
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".Exercise.PushUp_1"
+            android:name=".Exercise.ChestExercise_1_text"
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity

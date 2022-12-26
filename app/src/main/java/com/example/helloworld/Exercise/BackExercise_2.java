@@ -1,8 +1,10 @@
 package com.example.helloworld.Exercise;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.helloworld.NotAvailablePage;
 import com.example.helloworld.R;
+import com.example.helloworld.Settings.ThemeSettings;
 
 public class BackExercise_2 extends AppCompatActivity {
 
@@ -27,6 +30,12 @@ public class BackExercise_2 extends AppCompatActivity {
     CountDownTimer countDownTimer;
     Boolean counterIsActive = false;
     MediaPlayer mediaPlayer;
+
+    //Theme SharedPreferences
+    private View backBirdParentView;
+    private TextView backBirdTV1, backBirdTV2, backBirdTV3;
+
+    private ThemeSettings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +94,119 @@ public class BackExercise_2 extends AppCompatActivity {
 
             }
         });
+
+        // Theme SharedPreferences
+        settings = (ThemeSettings) getApplication();
+
+        initWidgets();
+        loadSharedPreferences();
+        updateThemeView();
+    }
+    private void initWidgets() {
+
+        backBirdParentView = findViewById(R.id.backBirdParentView);
+        backBirdTV1 = findViewById(R.id.backBirdTV1);
+        backBirdTV2 = findViewById(R.id.backBirdTV2);
+        backBirdTV3 = findViewById(R.id.backBirdTV3);
+
     }
 
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+
+        //Theme
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.CUSTOM_THEME);
+        settings.setCustomTheme(theme);
+        updateThemeView();
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
+        settings.setCustomSize(size);
+        updateSizeView();
+
+    }
+    private void updateThemeView() {
+
+        final int black = ContextCompat.getColor(this, R.color.dark_gray);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
+        final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.light_white);
+
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
+
+            backBirdTV1.setTextColor(white);
+            backBirdTV2.setTextColor(white);
+            backBirdTV3.setTextColor(white);
+            timer_tv.setTextColor(white);
+            backBirdParentView.setBackgroundColor(bgblack);
+
+        }else{
+
+            backBirdTV1.setTextColor(black);
+            backBirdTV2.setTextColor(black);
+            backBirdTV3.setTextColor(black);
+            timer_tv.setTextColor(black);
+            backBirdParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            backBirdTV1.setText("Bird Dog");
+            backBirdTV2.setText("View in AR");
+            backBirdTV3.setText("View in Text");
+            start_btn.setText("START");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            backBirdTV1.setText("Ibon Aso");
+            backBirdTV2.setText("Tignan sa AR");
+            backBirdTV3.setText("Tignan sa Teksto");
+            start_btn.setText("SIMULAN");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            backBirdTV1.setTextSize(24);
+            backBirdTV2.setTextSize(12);
+            backBirdTV3.setTextSize(12);
+            start_btn.setTextSize(12);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            backBirdTV1.setTextSize(26);
+            backBirdTV2.setTextSize(14);
+            backBirdTV3.setTextSize(14);
+            start_btn.setTextSize(14);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            backBirdTV1.setTextSize(28);
+            backBirdTV2.setTextSize(16);
+            backBirdTV3.setTextSize(16);
+            start_btn.setTextSize(16);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+
+        }
+    }
+
+    // Countdown Method
     private void update(int progress) {
         int minutes = progress / 60;
         int seconds = progress % 60;

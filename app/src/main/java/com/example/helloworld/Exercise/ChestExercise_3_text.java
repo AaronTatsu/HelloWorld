@@ -13,29 +13,30 @@ import android.widget.TextView;
 import com.example.helloworld.R;
 import com.example.helloworld.Settings.ThemeSettings;
 
-public class ArmsExercise_2_text extends AppCompatActivity {
+public class ChestExercise_3_text extends AppCompatActivity {
 
     ImageView bckBtn;
 
     //Theme SharedPreferences
-    private View armsPlankTextParentView;
-    private TextView armsPlankTextTV, armsPlankTextTV1;
+    private View chestIsoTextParentView;
+    private TextView chestIsoTextTV, chestIsoTextTV1;
 
     private ThemeSettings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arms_exercise2_text);
+        setContentView(R.layout.activity_chest_exercise3_text);
 
         bckBtn = findViewById(R.id.back_pressed);
         bckBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ArmsExercise_2.class);
+                Intent intent = new Intent(getApplicationContext(), ChestExercise_3.class);
                 startActivity(intent);
             }
         });
+
         // Theme SharedPreferences
         settings = (ThemeSettings) getApplication();
 
@@ -45,9 +46,9 @@ public class ArmsExercise_2_text extends AppCompatActivity {
     }
     private void initWidgets() {
 
-        armsPlankTextParentView = findViewById(R.id.armsPlankTextParentView);
-        armsPlankTextTV = findViewById(R.id.armsPlankTextTV);
-        armsPlankTextTV1 = findViewById(R.id.armsPlankTextTV1);
+        chestIsoTextParentView = findViewById(R.id.chestIsoTextParentView);
+        chestIsoTextTV = findViewById(R.id.chestIsoTextTV);
+        chestIsoTextTV1 = findViewById(R.id.chestIsoTextTV1);
 
     }
 
@@ -80,13 +81,13 @@ public class ArmsExercise_2_text extends AppCompatActivity {
 
         if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
 
-            armsPlankTextTV.setTextColor(white);
-            armsPlankTextParentView.setBackgroundColor(bgblack);
+            chestIsoTextTV.setTextColor(white);
+            chestIsoTextParentView.setBackgroundColor(bgblack);
 
         }else{
 
-            armsPlankTextTV.setTextColor(black);
-            armsPlankTextParentView.setBackgroundColor(bgwhite);
+            chestIsoTextTV.setTextColor(black);
+            chestIsoTextParentView.setBackgroundColor(bgwhite);
         }
     }
 
@@ -94,14 +95,14 @@ public class ArmsExercise_2_text extends AppCompatActivity {
     private void updateLangView() {
         if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
 
-            armsPlankTextTV.setText("Plank Up and Down");
-            armsPlankTextTV1.setText(R.string.arms_plank);
+            chestIsoTextTV.setText("Isometric Chest Squeeze");
+            chestIsoTextTV1.setText(R.string.push_squeeze);
             settings.setCustomLang(ThemeSettings.ENG_LANG);
 
         }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
 
-            armsPlankTextTV.setText("Plank Pataas at Pababa");
-            armsPlankTextTV1.setText(R.string.arms_plank_tag);
+            chestIsoTextTV.setText("Isometrikong Pagpisil sa Dibdib");
+            chestIsoTextTV1.setText(R.string.push_squeeze_tag);
             settings.setCustomLang(ThemeSettings.TAG_LANG);
 
         }
@@ -111,27 +112,27 @@ public class ArmsExercise_2_text extends AppCompatActivity {
     private void updateSizeView() {
         if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
 
-            armsPlankTextTV.setTextSize(24);
-            armsPlankTextTV1.setTextSize(12);
+            chestIsoTextTV.setTextSize(24);
+            chestIsoTextTV1.setTextSize(12);
             settings.setCustomSize(ThemeSettings.SMALL_SIZE);
 
         }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
 
-            armsPlankTextTV.setTextSize(26);
-            armsPlankTextTV1.setTextSize(14);
+            chestIsoTextTV.setTextSize(26);
+            chestIsoTextTV1.setTextSize(14);
             settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
 
         }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
 
-            armsPlankTextTV.setTextSize(28);
-            armsPlankTextTV1.setTextSize(16);
+            chestIsoTextTV.setTextSize(28);
+            chestIsoTextTV1.setTextSize(16);
             settings.setCustomSize(ThemeSettings.LARGE_SIZE);
 
         }
     }
 
     public void onBackPressed(){
-        Intent intent = new Intent(getApplicationContext(), ArmsExercise_2.class);
+        Intent intent = new Intent(getApplicationContext(), ChestExercise_3.class);
         startActivity(intent);
     }
 }

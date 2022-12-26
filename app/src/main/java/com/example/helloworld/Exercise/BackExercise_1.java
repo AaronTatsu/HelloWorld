@@ -1,8 +1,10 @@
 package com.example.helloworld.Exercise;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.helloworld.NotAvailablePage;
 import com.example.helloworld.R;
+import com.example.helloworld.Settings.ThemeSettings;
 
 public class BackExercise_1 extends AppCompatActivity {
 
@@ -27,6 +30,12 @@ public class BackExercise_1 extends AppCompatActivity {
     CountDownTimer countDownTimer;
     Boolean counterIsActive = false;
     MediaPlayer mediaPlayer;
+
+    //Theme SharedPreferences
+    private View backSuperYParentView;
+    private TextView backSuperYTV1, backSuperYTV2, backSuperYTV3;
+
+    private ThemeSettings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +94,119 @@ public class BackExercise_1 extends AppCompatActivity {
 
             }
         });
+
+        // Theme SharedPreferences
+        settings = (ThemeSettings) getApplication();
+
+        initWidgets();
+        loadSharedPreferences();
+        updateThemeView();
+    }
+    private void initWidgets() {
+
+        backSuperYParentView = findViewById(R.id.backSuperYParentView);
+        backSuperYTV1 = findViewById(R.id.backSuperYTV1);
+        backSuperYTV2 = findViewById(R.id.backSuperYTV2);
+        backSuperYTV3 = findViewById(R.id.backSuperYTV3);
+
     }
 
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+
+        //Theme
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.CUSTOM_THEME);
+        settings.setCustomTheme(theme);
+        updateThemeView();
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
+        settings.setCustomSize(size);
+        updateSizeView();
+
+    }
+    private void updateThemeView() {
+
+        final int black = ContextCompat.getColor(this, R.color.dark_gray);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
+        final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.light_white);
+
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
+
+            backSuperYTV1.setTextColor(white);
+            backSuperYTV2.setTextColor(white);
+            backSuperYTV3.setTextColor(white);
+            timer_tv.setTextColor(white);
+            backSuperYParentView.setBackgroundColor(bgblack);
+
+        }else{
+
+            backSuperYTV1.setTextColor(black);
+            backSuperYTV2.setTextColor(black);
+            backSuperYTV3.setTextColor(black);
+            timer_tv.setTextColor(black);
+            backSuperYParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            backSuperYTV1.setText("Superman Y");
+            backSuperYTV2.setText("View in AR");
+            backSuperYTV3.setText("View in Text");
+            start_btn.setText("START");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            backSuperYTV1.setText("Superman Y");
+            backSuperYTV2.setText("Tignan sa AR");
+            backSuperYTV3.setText("Tignan sa Teksto");
+            start_btn.setText("SIMULAN");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            backSuperYTV1.setTextSize(24);
+            backSuperYTV2.setTextSize(12);
+            backSuperYTV3.setTextSize(12);
+            start_btn.setTextSize(12);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            backSuperYTV1.setTextSize(26);
+            backSuperYTV2.setTextSize(14);
+            backSuperYTV3.setTextSize(14);
+            start_btn.setTextSize(14);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            backSuperYTV1.setTextSize(28);
+            backSuperYTV2.setTextSize(16);
+            backSuperYTV3.setTextSize(16);
+            start_btn.setTextSize(16);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+
+        }
+    }
+
+    // Countdown Method
     private void update(int progress) {
         int minutes = progress / 60;
         int seconds = progress % 60;

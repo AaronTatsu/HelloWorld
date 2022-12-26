@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/armsTricepTextParentView"
     android:background="@color/light_white"
     tools:context=".Exercise.ArmsExercise_1_text">
     <RelativeLayout
@@ -26,6 +27,7 @@
         android:orientation="vertical"
         android:layout_below="@+id/UpBar">
         <TextView
+            android:id="@+id/armsTricepTextTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -35,11 +37,13 @@
             android:textSize="26sp"
             android:textStyle="bold" />
         <TextView
+            android:id="@+id/armsTricepTextTV1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/arms_triceps"
             android:padding="20dp"
-            android:background="@drawable/round_back_settings_layout"/>
+            android:textSize="14sp"
+            android:background="@drawable/round_back_exercise_layout"/>
     </LinearLayout>
 
 </RelativeLayout>

@@ -1,10 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chestPushTextParentView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_white"
-    tools:context=".Exercise.PushUp_3_Squeeze">
+    tools:context=".Exercise.ChestExercise_1_text">
     <RelativeLayout
         android:id="@+id/UpBar"
         android:layout_width="match_parent"
@@ -25,21 +26,24 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_below="@+id/UpBar">
+    <TextView
+        android:id="@+id/chestPushTextTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:text="Push Up Exercise"
+        android:textAllCaps="true"
+        android:textSize="26sp"
+        android:textStyle="bold" />
         <TextView
+            android:id="@+id/chestPushTextTV1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:text="Push Up Squeeze"
-            android:textAllCaps="true"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/push_squeeze"
+            android:text="@string/push_up"
+            android:textSize="14sp"
             android:padding="20dp"
-            android:background="@drawable/round_back_settings_layout"/>
+            android:background="@drawable/round_back_exercise_layout"/>
     </LinearLayout>
 
 </RelativeLayout>

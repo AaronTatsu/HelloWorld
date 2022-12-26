@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chestShuffleParentView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_white"
@@ -28,6 +29,7 @@
         android:orientation="vertical"
         android:layout_below="@+id/UpBar">
         <TextView
+            android:id="@+id/chestShuffleTV1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -45,10 +47,12 @@
             android:layout_marginEnd="5dp"
             android:background="@drawable/round_back_exercise_end_layout"/>
         <TextView
-            android:layout_width="70dp"
+            android:id="@+id/chestShuffleTV2"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_gravity="end"
             android:text="View in AR"
+            android:textSize="14sp"
             android:layout_marginRight="35dp"
             android:layout_marginTop="-25dp"/>
         <ImageView
@@ -61,10 +65,12 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/round_back_exercise_end_layout"/>
         <TextView
-            android:layout_width="80dp"
+            android:id="@+id/chestShuffleTV3"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_gravity="end"
             android:text="View in Text"
+            android:textSize="14sp"
             android:layout_marginRight="35dp"
             android:layout_marginTop="-25dp"/>
 
@@ -94,6 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="START"
+            android:textSize="14sp"
             android:onClick="start_timer" />
     </LinearLayout>
 

@@ -1,8 +1,10 @@
 package com.example.helloworld.Exercise;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.helloworld.NotAvailablePage;
 import com.example.helloworld.R;
+import com.example.helloworld.Settings.ThemeSettings;
 
 public class ChestExercise_1 extends AppCompatActivity {
 
@@ -27,6 +30,12 @@ public class ChestExercise_1 extends AppCompatActivity {
     CountDownTimer countDownTimer;
     Boolean counterIsActive = false;
     MediaPlayer mediaPlayer;
+
+    //Theme SharedPreferences
+    private View chestPushParentView;
+    private TextView chestPushTV1, chestPushTV2, chestPushTV3;
+
+    private ThemeSettings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +67,7 @@ public class ChestExercise_1 extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PushUp_1.class);
+                Intent intent = new Intent(getApplicationContext(), ChestExercise_1_text.class);
                 startActivity(intent);
             }
         });
@@ -85,8 +94,119 @@ public class ChestExercise_1 extends AppCompatActivity {
 
             }
         });
+
+        // Theme SharedPreferences
+        settings = (ThemeSettings) getApplication();
+
+        initWidgets();
+        loadSharedPreferences();
+        updateThemeView();
+    }
+    private void initWidgets() {
+
+        chestPushParentView = findViewById(R.id.chestPushParentView);
+        chestPushTV1 = findViewById(R.id.chestPushTV1);
+        chestPushTV2 = findViewById(R.id.chestPushTV2);
+        chestPushTV3 = findViewById(R.id.chestPushTV3);
+
     }
 
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+
+        //Theme
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.CUSTOM_THEME);
+        settings.setCustomTheme(theme);
+        updateThemeView();
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
+        settings.setCustomSize(size);
+        updateSizeView();
+
+    }
+    private void updateThemeView() {
+
+        final int black = ContextCompat.getColor(this, R.color.dark_gray);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
+        final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.light_white);
+
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
+
+            chestPushTV1.setTextColor(white);
+            chestPushTV2.setTextColor(white);
+            chestPushTV3.setTextColor(white);
+            timer_tv.setTextColor(white);
+            chestPushParentView.setBackgroundColor(bgblack);
+
+        }else{
+
+            chestPushTV1.setTextColor(black);
+            chestPushTV2.setTextColor(black);
+            chestPushTV3.setTextColor(black);
+            timer_tv.setTextColor(black);
+            chestPushParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            chestPushTV1.setText("Push Up");
+            chestPushTV2.setText("View in AR");
+            chestPushTV3.setText("View in Text");
+            start_btn.setText("START");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            chestPushTV1.setText("Pagdiin-Angat");
+            chestPushTV2.setText("Tignan sa AR");
+            chestPushTV3.setText("Tignan sa Teksto");
+            start_btn.setText("SIMULAN");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            chestPushTV1.setTextSize(24);
+            chestPushTV2.setTextSize(12);
+            chestPushTV3.setTextSize(12);
+            start_btn.setTextSize(12);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            chestPushTV1.setTextSize(26);
+            chestPushTV2.setTextSize(14);
+            chestPushTV3.setTextSize(14);
+            start_btn.setTextSize(14);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            chestPushTV1.setTextSize(28);
+            chestPushTV2.setTextSize(16);
+            chestPushTV3.setTextSize(16);
+            start_btn.setTextSize(16);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+
+        }
+    }
+
+    // Countdown Method
     private void update(int progress) {
         int minutes = progress / 60;
         int seconds = progress % 60;

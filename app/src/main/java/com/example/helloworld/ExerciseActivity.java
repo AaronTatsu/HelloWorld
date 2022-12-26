@@ -167,7 +167,6 @@ public class ExerciseActivity extends AppCompatActivity {
         settings.setCustomTheme(theme);
         updateThemeView();
 
-
         //Lang
         String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
         settings.setCustomLang(lang);
@@ -176,6 +175,7 @@ public class ExerciseActivity extends AppCompatActivity {
         //Size
         String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
         settings.setCustomSize(size);
+        updateSizeView();
 
     }
 
@@ -212,19 +212,90 @@ public class ExerciseActivity extends AppCompatActivity {
             coreExeTV1.setText("Core &amp; Abdominal Exercise");
             legsExeTV1.setText("Legs Exercise");
             fullExeTV1.setText("Full Body Exercise");
+            btn1.setText("Start Exercise >>");
+            btn2.setText("Start Exercise >>");
+            btn3.setText("Start Exercise >>");
+            btn4.setText("Start Exercise >>");
+            btn5.setText("Start Exercise >>");
+            btn6.setText("Start Exercise >>");
             settings.setCustomLang(ThemeSettings.ENG_LANG);
 
         }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
 
-            exerciseTitleTV.setText("Exercise");
-            exerciseCatTV.setText("Categories");
-            chestExeTV1.setText("Chest Exercise");
-            armsExeTV1.setText("Arms Exercise");
-            backExeTV1.setText("Back Exercise");
-            coreExeTV1.setText("Core &amp; Abdominal Exercise");
-            legsExeTV1.setText("Legs Exercise");
-            fullExeTV1.setText("Full Body Exercise");
+            exerciseTitleTV.setText("Ehersisyo");
+            exerciseCatTV.setText("Mga Kategorya");
+            chestExeTV1.setText("Ehersisyo sa Dibdib");
+            armsExeTV1.setText("Ehersisyo sa Kamay");
+            backExeTV1.setText("Ehersisyo sa Likod");
+            coreExeTV1.setText("Ehersisyo ng Tiyan at Bisig");
+            legsExeTV1.setText("Ehersisyo sa Binti");
+            fullExeTV1.setText("Buong Ehersisyo sa Katawan");
+            btn1.setText("Simulan ang Ehersisyo >>");
+            btn2.setText("Simulan ang Ehersisyo >>");
+            btn3.setText("Simulan ang Ehersisyo >>");
+            btn4.setText("Simulan ang Ehersisyo >>");
+            btn5.setText("Simulan ang Ehersisyo >>");
+            btn6.setText("Simulan ang Ehersisyo >>");
             settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            exerciseTitleTV.setTextSize(16);
+            exerciseCatTV.setTextSize(24);
+            chestExeTV1.setTextSize(18);
+            armsExeTV1.setTextSize(18);
+            backExeTV1.setTextSize(18);
+            coreExeTV1.setTextSize(15);
+            legsExeTV1.setTextSize(18);
+            fullExeTV1.setTextSize(18);
+            btn1.setTextSize(12);
+            btn2.setTextSize(12);
+            btn3.setTextSize(12);
+            btn4.setTextSize(12);
+            btn5.setTextSize(12);
+            btn6.setTextSize(12);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            exerciseTitleTV.setTextSize(18);
+            exerciseCatTV.setTextSize(26);
+            chestExeTV1.setTextSize(20);
+            armsExeTV1.setTextSize(20);
+            backExeTV1.setTextSize(20);
+            coreExeTV1.setTextSize(17);
+            legsExeTV1.setTextSize(20);
+            fullExeTV1.setTextSize(20);
+            btn1.setTextSize(14);
+            btn2.setTextSize(14);
+            btn3.setTextSize(14);
+            btn4.setTextSize(14);
+            btn5.setTextSize(14);
+            btn6.setTextSize(14);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            exerciseTitleTV.setTextSize(20);
+            exerciseCatTV.setTextSize(28);
+            chestExeTV1.setTextSize(22);
+            armsExeTV1.setTextSize(22);
+            backExeTV1.setTextSize(22);
+            coreExeTV1.setTextSize(19);
+            legsExeTV1.setTextSize(22);
+            fullExeTV1.setTextSize(22);
+            btn1.setTextSize(16);
+            btn2.setTextSize(16);
+            btn3.setTextSize(16);
+            btn4.setTextSize(16);
+            btn5.setTextSize(16);
+            btn6.setTextSize(16);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
 
         }
     }

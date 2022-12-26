@@ -272,6 +272,7 @@ public class BMIActivity extends AppCompatActivity {
 
         }
     }
+
     // Text Size View
     private void updateSizeView() {
         if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){

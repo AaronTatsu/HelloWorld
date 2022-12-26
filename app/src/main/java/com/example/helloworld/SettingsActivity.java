@@ -250,6 +250,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
             settingsTV.setTextColor(white);
             userTV.setTextColor(white);
+            userTV.setHintTextColor(white);
             nightmodeTV.setTextColor(white);
             notificationsTV.setTextColor(white);
             securityTV.setTextColor(white);
@@ -265,6 +266,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         }else{
             settingsTV.setTextColor(black);
             userTV.setTextColor(black);
+            userTV.setHintTextColor(black);
             nightmodeTV.setTextColor(black);
             notificationsTV.setTextColor(black);
             securityTV.setTextColor(black);

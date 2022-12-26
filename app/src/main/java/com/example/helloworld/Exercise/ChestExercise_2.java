@@ -1,8 +1,10 @@
 package com.example.helloworld.Exercise;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.helloworld.NotAvailablePage;
 import com.example.helloworld.R;
+import com.example.helloworld.Settings.ThemeSettings;
 
 public class ChestExercise_2 extends AppCompatActivity {
 
@@ -27,6 +30,12 @@ public class ChestExercise_2 extends AppCompatActivity {
     CountDownTimer countDownTimer;
     Boolean counterIsActive = false;
     MediaPlayer mediaPlayer;
+
+    //Theme SharedPreferences
+    private View chestShuffleParentView;
+    private TextView  chestShuffleTV1,  chestShuffleTV2,  chestShuffleTV3;
+
+    private ThemeSettings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +67,7 @@ public class ChestExercise_2 extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PushUp_2_Shuffle.class);
+                Intent intent = new Intent(getApplicationContext(), ChestExercise_2_text.class);
                 startActivity(intent);
             }
         });
@@ -85,6 +94,116 @@ public class ChestExercise_2 extends AppCompatActivity {
 
             }
         });
+
+        // Theme SharedPreferences
+        settings = (ThemeSettings) getApplication();
+
+        initWidgets();
+        loadSharedPreferences();
+        updateThemeView();
+    }
+    private void initWidgets() {
+
+        chestShuffleParentView = findViewById(R.id.chestShuffleParentView);
+        chestShuffleTV1 = findViewById(R.id.chestShuffleTV1);
+        chestShuffleTV2 = findViewById(R.id.chestShuffleTV2);
+        chestShuffleTV3 = findViewById(R.id.chestShuffleTV3);
+
+    }
+
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+
+        //Theme
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.CUSTOM_THEME);
+        settings.setCustomTheme(theme);
+        updateThemeView();
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
+        settings.setCustomSize(size);
+        updateSizeView();
+
+    }
+    private void updateThemeView() {
+
+        final int black = ContextCompat.getColor(this, R.color.dark_gray);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
+        final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.light_white);
+
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
+
+            chestShuffleTV1.setTextColor(white);
+            chestShuffleTV2.setTextColor(white);
+            chestShuffleTV3.setTextColor(white);
+            timer_tv.setTextColor(white);
+            chestShuffleParentView.setBackgroundColor(bgblack);
+
+        }else{
+
+            chestShuffleTV1.setTextColor(black);
+            chestShuffleTV2.setTextColor(black);
+            chestShuffleTV3.setTextColor(black);
+            timer_tv.setTextColor(black);
+            chestShuffleParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            chestShuffleTV1.setText("Push Up Shuffle");
+            chestShuffleTV2.setText("View in AR");
+            chestShuffleTV3.setText("View in Text");
+            start_btn.setText("START");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            chestShuffleTV1.setText("Pagdiin-Angat Lumipat");
+            chestShuffleTV2.setText("Tignan sa AR");
+            chestShuffleTV3.setText("Tignan sa Teksto");
+            start_btn.setText("SIMULAN");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            chestShuffleTV1.setTextSize(24);
+            chestShuffleTV2.setTextSize(12);
+            chestShuffleTV3.setTextSize(12);
+            start_btn.setTextSize(12);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            chestShuffleTV1.setTextSize(26);
+            chestShuffleTV2.setTextSize(14);
+            chestShuffleTV3.setTextSize(14);
+            start_btn.setTextSize(14);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            chestShuffleTV1.setTextSize(28);
+            chestShuffleTV2.setTextSize(16);
+            chestShuffleTV3.setTextSize(16);
+            start_btn.setTextSize(16);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+
+        }
     }
 
     private void update(int progress) {

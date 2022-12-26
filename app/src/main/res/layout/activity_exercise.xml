@@ -81,7 +81,8 @@
                     android:layout_alignParentBottom="true"
                     android:background="@drawable/transparent_background"
                     android:padding="25dp"
-                    android:text="Start Exercise >>" />
+                    android:text="Start Exercise >>"
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:layout_width="150dp"
@@ -124,6 +125,7 @@
                     android:background="@drawable/transparent_background"
                     android:padding="25dp"
                     android:text="Start Exercise >>"
+                    android:textSize="14sp"
                     android:textColor="@color/white" />
             </RelativeLayout>
 
@@ -150,7 +152,8 @@
                     android:layout_alignParentBottom="true"
                     android:background="@drawable/transparent_background"
                     android:padding="25dp"
-                    android:text="Start Exercise >>" />
+                    android:text="Start Exercise >>"
+                    android:textSize="14sp"/>
 
                 <ImageView
                     android:layout_width="150dp"
@@ -193,6 +196,7 @@
                     android:background="@drawable/transparent_background"
                     android:padding="25dp"
                     android:text="Start Exercise >>"
+                    android:textSize="14sp"
                     android:textColor="@color/white" />
             </RelativeLayout>
 
@@ -219,7 +223,8 @@
                     android:layout_alignParentBottom="true"
                     android:background="@drawable/transparent_background"
                     android:padding="25dp"
-                    android:text="Start Exercise >>" />
+                    android:text="Start Exercise >>"
+                    android:textSize="14sp"/>
 
                 <ImageView
                     android:layout_width="150dp"
@@ -262,6 +267,7 @@
                     android:background="@drawable/transparent_background"
                     android:padding="25dp"
                     android:text="Start Exercise >>"
+                    android:textSize="14sp"
                     android:textColor="@color/white" />
             </RelativeLayout>
 

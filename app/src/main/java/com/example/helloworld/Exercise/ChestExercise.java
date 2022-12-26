@@ -21,7 +21,7 @@ public class ChestExercise extends AppCompatActivity {
 
     //Theme SharedPreferences
     private View chestParentView;
-    private TextView chestTitleTV;
+    private TextView chestTitleTV, chestTV1, chestTV2, chestTV3, chestRepeatTV1, chestRepeatTV2, chestRepeatTV3, chestTimeTV1, chestTimeTV2, chestTimeTV3;
 
     private ThemeSettings settings;
 
@@ -78,12 +78,36 @@ public class ChestExercise extends AppCompatActivity {
 
         chestParentView = findViewById(R.id.chestParentView);
         chestTitleTV = findViewById(R.id.chestTitleTV);
+        chestTV1 = findViewById(R.id.chestTV1);
+        chestTV2 = findViewById(R.id.chestTV2);
+        chestTV3 = findViewById(R.id.chestTV3);
+        chestRepeatTV1 = findViewById(R.id.chestRepeatTV1);
+        chestRepeatTV2 = findViewById(R.id.chestRepeatTV2);
+        chestRepeatTV3 = findViewById(R.id.chestRepeatTV3);
+        chestTimeTV1 = findViewById(R.id.chestTimeTV1);
+        chestTimeTV2 = findViewById(R.id.chestTimeTV2);
+        chestTimeTV3 = findViewById(R.id.chestTimeTV3);
+
     }
+
     private void loadSharedPreferences() {
 
         SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
-        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
+
+        //Theme
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.CUSTOM_THEME);
         settings.setCustomTheme(theme);
+        updateThemeView();
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
+        settings.setCustomSize(size);
+        updateSizeView();
 
     }
     private void updateThemeView() {
@@ -102,6 +126,86 @@ public class ChestExercise extends AppCompatActivity {
 
             chestTitleTV.setTextColor(black);
             chestParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            chestTitleTV.setText("Chest Exercise");
+            chestTV1.setText("Push Up");
+            chestTV2.setText("Push Up Shuffle");
+            chestTV3.setText("Isometric Squeeze Chest");
+            chestRepeatTV1.setText("Repeat 2 Times");
+            chestRepeatTV2.setText("Repeat 2 Times");
+            chestRepeatTV3.setText("Repeat 2 Times");
+            chestTimeTV1.setText("1:00 MINUTE");
+            chestTimeTV2.setText("1:00 MINUTE");
+            chestTimeTV3.setText("1:00 MINUTE");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            chestTitleTV.setText("Ehersisyo sa Dibdib");
+            chestTV1.setText("Pagdiin-Angat");
+            chestTV2.setText("Pagdiin-Angat Lumipat");
+            chestTV3.setText("Isometrikong Pagpisil sa Dibdib");
+            chestRepeatTV1.setText("Ulitin ng 2 beses");
+            chestRepeatTV2.setText("Ulitin ng 2 beses");
+            chestRepeatTV3.setText("Ulitin ng 2 beses");
+            chestTimeTV1.setText("1:00 MINUTO");
+            chestTimeTV2.setText("1:00 MINUTO");
+            chestTimeTV3.setText("1:00 MINUTO");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            chestTitleTV.setTextSize(16);
+            chestTV1.setTextSize(13);
+            chestTV2.setTextSize(13);
+            chestTV3.setTextSize(13);
+            chestRepeatTV1.setTextSize(10);
+            chestRepeatTV2.setTextSize(10);
+            chestRepeatTV3.setTextSize(10);
+            chestTimeTV1.setTextSize(13);
+            chestTimeTV2.setTextSize(13);
+            chestTimeTV3.setTextSize(13);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            chestTitleTV.setTextSize(18);
+            chestTV1.setTextSize(15);
+            chestTV2.setTextSize(15);
+            chestTV3.setTextSize(15);
+            chestRepeatTV1.setTextSize(12);
+            chestRepeatTV2.setTextSize(12);
+            chestRepeatTV3.setTextSize(12);
+            chestTimeTV1.setTextSize(15);
+            chestTimeTV2.setTextSize(15);
+            chestTimeTV3.setTextSize(15);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            chestTitleTV.setTextSize(20);
+            chestTV1.setTextSize(17);
+            chestTV2.setTextSize(17);
+            chestTV3.setTextSize(17);
+            chestRepeatTV1.setTextSize(14);
+            chestRepeatTV2.setTextSize(14);
+            chestRepeatTV3.setTextSize(14);
+            chestTimeTV1.setTextSize(17);
+            chestTimeTV2.setTextSize(17);
+            chestTimeTV3.setTextSize(17);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+
         }
     }
 

@@ -14,6 +14,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark_gray">#99171717</color>
     <color name="gray">#99FFFFFF</color>
+    <color name="hint_gray">#A8A8A8</color>
     <color name="light_gray">#D6D8DE</color>
     <color name="grayest">#999A9A9A</color>
     <color name="medyo_gray">#333333</color>

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     // For Notification
     private SwitchCompat notifSwitch;
+
+    String langSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,8 +2,10 @@ package com.example.helloworld.AccountEntry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.helloworld.MainActivity;
 import com.example.helloworld.R;
+import com.example.helloworld.Settings.ThemeSettings;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,6 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // Log In Activity Methods
     private ImageView eyeIcon;
     private TextView register, forgotpass;
     private EditText editEmail, editPassword;
@@ -34,11 +38,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
 
+    // Theme SharedPreferences
+    private View loginParentView;
+    private TextView logoText, registerTV;
+
+    private ThemeSettings settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Intents
         eyeIcon = (ImageView) findViewById(R.id.eyeIcon);
         eyeIcon.setOnClickListener(this);
 
@@ -56,8 +67,142 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         mAuth = FirebaseAuth.getInstance();
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+
+        //Theme SharedPreferences
+        settings = (ThemeSettings) getApplication();
+
+        initWidgets();
+        loadSharedPreferences();
+
+    }
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+
+        //Theme
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.CUSTOM_THEME);
+        settings.setCustomTheme(theme);
+        updateThemeView();
+
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
+        settings.setCustomSize(size);
+        updateSizeView();
+
     }
 
+    private void initWidgets() {
+
+        loginParentView = findViewById(R.id.loginParentView);
+        logoText = findViewById(R.id.LogoText);
+        registerTV = findViewById(R.id.registerTV);
+
+    }
+
+    // Theme View
+    private void updateThemeView() {
+
+        final int black = ContextCompat.getColor(this, R.color.black);
+        final int hint_gray = ContextCompat.getColor(this, R.color.hint_gray);
+        final int gray = ContextCompat.getColor(this, R.color.dark_gray);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
+        final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.white);
+
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
+
+            logoText.setTextColor(white);
+            editEmail.setTextColor(white);
+            editEmail.setHintTextColor(white);
+            editPassword.setTextColor(white);
+            editPassword.setHintTextColor(white);
+            forgotpass.setTextColor(white);
+            register.setTextColor(white);
+            btnLogin.setTextColor(black);
+            btnLogin.setBackgroundColor(white);
+            registerTV.setTextColor(white);
+            eyeIcon.setColorFilter(white);
+            loginParentView.setBackgroundColor(bgblack);
+
+        }else{
+
+            logoText.setTextColor(black);
+            editEmail.setTextColor(black);
+            editEmail.setHintTextColor(hint_gray);
+            editPassword.setTextColor(black);
+            editPassword.setHintTextColor(hint_gray);
+            forgotpass.setTextColor(gray);
+            register.setTextColor(black);
+            btnLogin.setTextColor(white);
+            btnLogin.setBackgroundColor(black);
+            registerTV.setTextColor(black);
+            eyeIcon.setColorFilter(black);
+            loginParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            btnLogin.setText("LOGIN");
+            register.setText("Sign Up Now");
+            forgotpass.setText("Forgot Password?");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            btnLogin.setText("PUMASOK");
+            register.setText("Mag sign up");
+            forgotpass.setText("Nakalimutan ang Password?");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            logoText.setTextSize(38);
+            editPassword.setTextSize(16);
+            editEmail.setTextSize(16);
+            btnLogin.setTextSize(20);
+            register.setTextSize(16);
+            forgotpass.setTextSize(13);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            logoText.setTextSize(40);
+            editPassword.setTextSize(18);
+            editEmail.setTextSize(18);
+            btnLogin.setTextSize(22);
+            register.setTextSize(18);
+            forgotpass.setTextSize(15);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            logoText.setTextSize(42);
+            editPassword.setTextSize(20);
+            editEmail.setTextSize(20);
+            btnLogin.setTextSize(24);
+            register.setTextSize(20);
+            forgotpass.setTextSize(17);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+
+        }
+    }
+
+    // Eye Icon Functions
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -86,26 +231,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    // Login Functions
     private void btnLogin() {
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
 
-        if(email.isEmpty()){
+        if (email.isEmpty()) {
             editEmail.setError("Email is required");
             editEmail.requestFocus();
             return;
         }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             editEmail.setError("Please provide a valid email!");
             editEmail.requestFocus();
             return;
         }
-        if(password.isEmpty()){
+        if (password.isEmpty()) {
             editPassword.setError("Password is required");
             editPassword.requestFocus();
             return;
         }
-        if(password.length() < 6){
+        if (password.length() < 6) {
             editPassword.setError("Minimum password length is 6 characters");
             editPassword.requestFocus();
             return;
@@ -117,17 +263,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                    if(user.isEmailVerified()){
+                    if (user.isEmailVerified()) {
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    }else{
+                    } else {
                         user.sendEmailVerification();
                         Toast.makeText(LoginActivity.this, "Please check your email to verify your account!", Toast.LENGTH_LONG).show();
                     }
-                }else{
+                } else {
                     Toast.makeText(LoginActivity.this, "Failed to login! Try again!", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.GONE);
                 }
@@ -135,6 +281,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
+    // Auto Login Functions
     @Override
     protected void onStart() {
         super.onStart();

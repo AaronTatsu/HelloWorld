@@ -2,8 +2,10 @@ package com.example.helloworld.AccountEntry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.helloworld.NotAvailablePage;
 import com.example.helloworld.R;
+import com.example.helloworld.Settings.ThemeSettings;
 import com.example.helloworld.Settings.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // Register Variables
     private ImageView logoImage, eyeIcon1, eyeIcon2;
     private TextView bckLogin, termsCon, termsPrivacy;
     private Button btnRegister;
@@ -41,6 +45,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private FirebaseAuth mAuth;
 
+    // Theme SharedPreferences
+    private View registerParentView;
+    private TextView logoText, termsAgreementText, termsAgreementText1, alreadyAccTxt;
+
+    private ThemeSettings settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         mAuth = FirebaseAuth.getInstance();
 
+        // Intents
         logoImage = (ImageView) findViewById(R.id.logoImage);
         logoImage.setOnClickListener(this);
 
@@ -77,8 +88,183 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         progressBar = (ProgressBar) findViewById(R.id.progressBars);
 
+
+        //Theme SharedPreferences
+        settings = (ThemeSettings) getApplication();
+
+        initWidgets();
+        loadSharedPreferences();
     }
 
+    private void loadSharedPreferences() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
+
+        //Theme
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.CUSTOM_THEME);
+        settings.setCustomTheme(theme);
+        updateThemeView();
+
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
+        settings.setCustomSize(size);
+        updateSizeView();
+
+    }
+
+    private void initWidgets() {
+
+        registerParentView = findViewById(R.id.registerParentView);
+        logoText = findViewById(R.id.LogoText);
+        termsAgreementText = findViewById(R.id.termsAgreementText);
+        termsAgreementText1 = findViewById(R.id.termsAgreementText1);
+        alreadyAccTxt = findViewById(R.id.alreadyAccTxt);
+
+    }
+
+    // Theme View
+    private void updateThemeView() {
+
+        final int black = ContextCompat.getColor(this, R.color.black);
+        final int hint_gray = ContextCompat.getColor(this, R.color.hint_gray);
+        final int bgblack = ContextCompat.getColor(this, R.color.light_black);
+        final int bgwhite = ContextCompat.getColor(this, R.color.light_white);
+        final int white = ContextCompat.getColor(this, R.color.white);
+
+        if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
+
+            logoText.setTextColor(white);
+            editFullName.setTextColor(white);
+            editFullName.setHintTextColor(white);
+            editAge.setTextColor(white);
+            editAge.setHintTextColor(white);
+            editEmail.setTextColor(white);
+            editEmail.setHintTextColor(white);
+            editPassword.setTextColor(white);
+            editPassword.setHintTextColor(white);
+            editConPassword.setTextColor(white);
+            editConPassword.setHintTextColor(white);
+            termsAgreementText.setTextColor(white);
+            termsAgreementText1.setTextColor(white);
+            alreadyAccTxt.setTextColor(white);
+            btnRegister.setTextColor(black);
+            btnRegister.setBackgroundColor(white);
+            bckLogin.setTextColor(white);
+            eyeIcon1.setColorFilter(white);
+            eyeIcon2.setColorFilter(white);
+            registerParentView.setBackgroundColor(bgblack);
+
+        }else{
+
+            logoText.setTextColor(black);
+            editFullName.setTextColor(black);
+            editFullName.setHintTextColor(hint_gray);
+            editAge.setTextColor(black);
+            editAge.setHintTextColor(hint_gray);
+            editEmail.setTextColor(black);
+            editEmail.setHintTextColor(hint_gray);
+            editPassword.setTextColor(black);
+            editPassword.setHintTextColor(hint_gray);
+            editConPassword.setTextColor(black);
+            editConPassword.setHintTextColor(hint_gray);
+            termsAgreementText.setTextColor(black);
+            termsAgreementText1.setTextColor(black);
+            alreadyAccTxt.setTextColor(black);
+            btnRegister.setTextColor(white);
+            btnRegister.setBackgroundColor(black);
+            bckLogin.setTextColor(black);
+            eyeIcon1.setColorFilter(black);
+            eyeIcon2.setColorFilter(black);
+            registerParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            termsAgreementText.setText("By creating an account, you are agreeing to our ");
+            termsAgreementText1.setText("and ");
+            btnRegister.setText("REGISTER");
+            alreadyAccTxt.setText("Already have an account? ");
+            bckLogin.setText("Login Now");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            termsAgreementText.setText("Sa paggawa ng account, sumasang-ayon ka sa ");
+            termsAgreementText1.setText("at ");
+            btnRegister.setText("MAG REHISTRO");
+            alreadyAccTxt.setText("Mayroon nang account? ");
+            bckLogin.setText("Mag Login");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            logoText.setTextSize(38);
+            editFullName.setTextSize(16);
+            editAge.setTextSize(16);
+            editEmail.setTextSize(16);
+            editPassword.setTextSize(16);
+            editConPassword.setTextSize(16);
+            termsAgreementText.setTextSize(7);
+            termsAgreementText1.setTextSize(7);
+            termsCon.setTextSize(7);
+            termsPrivacy.setTextSize(7);
+            btnRegister.setTextSize(20);
+            alreadyAccTxt.setTextSize(12);
+            bckLogin.setTextSize(12);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            logoText.setTextSize(40);
+            editFullName.setTextSize(18);
+            editAge.setTextSize(18);
+            editEmail.setTextSize(18);
+            editPassword.setTextSize(18);
+            editConPassword.setTextSize(18);
+            termsAgreementText.setTextSize(9);
+            termsAgreementText1.setTextSize(9);
+            termsCon.setTextSize(9);
+            termsPrivacy.setTextSize(9);
+            btnRegister.setTextSize(22);
+            alreadyAccTxt.setTextSize(14);
+            bckLogin.setTextSize(14);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            logoText.setTextSize(42);
+            editFullName.setTextSize(20);
+            editAge.setTextSize(20);
+            editEmail.setTextSize(20);
+            editPassword.setTextSize(20);
+            editConPassword.setTextSize(20);
+            termsAgreementText.setTextSize(11);
+            termsAgreementText1.setTextSize(11);
+            termsCon.setTextSize(11);
+            termsPrivacy.setTextSize(11);
+            btnRegister.setTextSize(24);
+            alreadyAccTxt.setTextSize(16);
+            bckLogin.setTextSize(16);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+
+        }
+    }
+
+    // Register Methods
     @Override
     public void onClick(View v) {
         switch (v.getId()){

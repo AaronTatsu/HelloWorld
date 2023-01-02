@@ -9,6 +9,25 @@
     android:background="@color/light_white">
 
     <ImageView
+        android:id="@+id/langImg"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/LogoImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/language_gray"/>
+    <ImageView
+        android:id="@+id/langBtn"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="56dp"
+        app:layout_constraintBottom_toTopOf="@+id/LogoImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/arrow_down_gray"/>
+
+    <ImageView
         android:id="@+id/LogoImage"
         android:layout_width="match_parent"
         android:layout_height="150dp"
@@ -17,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/logoimage"
-        android:layout_marginBottom="500dp"/>
+        android:layout_marginBottom="420dp"/>
     <TextView
         android:id="@+id/LogoText"
         android:layout_width="wrap_content"

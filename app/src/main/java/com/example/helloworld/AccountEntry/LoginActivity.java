@@ -2,18 +2,23 @@ package com.example.helloworld.AccountEntry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import androidx.appcompat.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     // Theme SharedPreferences
     private View loginParentView;
+    ImageView langBtn;
     private TextView logoText, registerTV;
 
     private ThemeSettings settings;
@@ -70,10 +76,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
         //Theme SharedPreferences
+        langBtn = (ImageView) findViewById(R.id.langBtn);
+
         settings = (ThemeSettings) getApplication();
 
         initWidgets();
         loadSharedPreferences();
+        langClickListener();
 
     }
     private void loadSharedPreferences() {
@@ -104,6 +113,48 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         logoText = findViewById(R.id.LogoText);
         registerTV = findViewById(R.id.registerTV);
 
+    }
+
+    private void langClickListener(){
+        langBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
+            @Override
+            public void onClick(View v) {
+                PopupMenu popupMenu = new PopupMenu(LoginActivity.this, langBtn);
+
+                popupMenu.getMenuInflater().inflate(R.menu.lang_pop_up_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.nav_eng:
+                                Toast.makeText(LoginActivity.this, "Selected English Language", Toast.LENGTH_SHORT).show();
+                                settings.setCustomLang(ThemeSettings.ENG_LANG);
+                                SharedPreferences.Editor editor = getSharedPreferences(ThemeSettings.PREFERENCES, MODE_PRIVATE).edit();
+                                editor.putString(ThemeSettings.CUSTOM_LANG, settings.getCustomLang());
+                                editor.apply();
+                                updateLangView();
+                                return true;
+
+                            case R.id.nav_tag:
+                                Toast.makeText(LoginActivity.this, "Selected Tagalog Language", Toast.LENGTH_SHORT).show();
+                                settings.setCustomLang(ThemeSettings.TAG_LANG);
+                                editor = getSharedPreferences(ThemeSettings.PREFERENCES, MODE_PRIVATE).edit();
+                                editor.putString(ThemeSettings.CUSTOM_LANG, settings.getCustomLang());
+                                editor.apply();
+                                updateLangView();
+                                return true;
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
+
+                MenuPopupHelper menuHelper = new MenuPopupHelper(LoginActivity.this, (MenuBuilder) popupMenu.getMenu(), langBtn);
+                menuHelper.setForceShowIcon(true);
+                menuHelper.show();
+            }
+        });
     }
 
     // Theme View
@@ -153,6 +204,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
 
             btnLogin.setText("LOGIN");
+            registerTV.setText("Don't have an account?");
             register.setText("Sign Up Now");
             forgotpass.setText("Forgot Password?");
             settings.setCustomLang(ThemeSettings.ENG_LANG);
@@ -160,6 +212,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
 
             btnLogin.setText("PUMASOK");
+            registerTV.setText("Wala pang account?");
             register.setText("Mag sign up");
             forgotpass.setText("Nakalimutan ang Password?");
             settings.setCustomLang(ThemeSettings.TAG_LANG);

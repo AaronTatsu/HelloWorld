@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.example.helloworld.R;
 import com.example.helloworld.SettingsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +27,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,12 +37,14 @@ import java.util.Map;
 public class UserProfileActivity extends AppCompatActivity {
 
     //For Firebase
+    private FirebaseAuth mAuth;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
+    private StorageReference mStorage;
 
     //For Intent
-    ImageView bckBtn;
+    ImageView bckBtn, profileImg;
 
     //Theme SharedPreferences
     private View userProfileParentView;
@@ -54,6 +61,17 @@ public class UserProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
 
         // For Firebase
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mStorage = FirebaseStorage.getInstance().getReference();
+        StorageReference profileRef = mStorage.child("users/"+mAuth.getCurrentUser().getUid()+"/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImg);
+            }
+        });
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -96,6 +114,9 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
 
+        // Intent
+        profileImg = (ImageView) findViewById(R.id.profileImg);
+
         //For Back Button Intent
         bckBtn = findViewById(R.id.back_pressed);
         bckBtn.setOnClickListener(new View.OnClickListener() {
@@ -123,10 +144,26 @@ public class UserProfileActivity extends AppCompatActivity {
     private void loadSharedPreferences() {
 
         SharedPreferences sharedPreferences = getSharedPreferences(ThemeSettings.PREFERENCES,MODE_PRIVATE);
-        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.LIGHT_THEME);
+
+        //Theme
+        String theme = sharedPreferences.getString(ThemeSettings.CUSTOM_THEME, ThemeSettings.CUSTOM_THEME);
         settings.setCustomTheme(theme);
+        updateThemeView();
+
+
+        //Lang
+        String lang = sharedPreferences.getString(ThemeSettings.CUSTOM_LANG, ThemeSettings.CUSTOM_LANG);
+        settings.setCustomLang(lang);
+        updateLangView();
+
+        //Size
+        String size = sharedPreferences.getString(ThemeSettings.CUSTOM_SIZE, ThemeSettings.CUSTOM_SIZE);
+        settings.setCustomSize(size);
+        updateSizeView();
 
     }
+
+    // Theme View
     private void updateThemeView() {
 
         final int black = ContextCompat.getColor(this, R.color.black);
@@ -147,6 +184,55 @@ public class UserProfileActivity extends AppCompatActivity {
             username.setTextColor(black);
             username.setHintTextColor(bgblack);
             userProfileParentView.setBackgroundColor(bgwhite);
+        }
+    }
+
+    // Language View
+    private void updateLangView() {
+        if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
+
+            userProfileTitleTV.setText("Profile");
+            updateBtn.setText("Update Profile");
+            settings.setCustomLang(ThemeSettings.ENG_LANG);
+
+        }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
+
+            userProfileTitleTV.setText("Profile");
+            updateBtn.setText("I-Update ang Profile");
+            settings.setCustomLang(ThemeSettings.TAG_LANG);
+
+        }
+    }
+
+    // Text Size View
+    private void updateSizeView() {
+        if(settings.getCustomSize().equals(ThemeSettings.SMALL_SIZE)){
+
+            userProfileTitleTV.setTextSize(16);
+            username.setTextSize(20);
+            fullNameText1.setTextSize(13);
+            ageText.setTextSize(13);
+            emailAddText.setTextSize(13);
+            settings.setCustomSize(ThemeSettings.SMALL_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.MEDIUM_SIZE)){
+
+            userProfileTitleTV.setTextSize(18);
+            username.setTextSize(22);
+            fullNameText1.setTextSize(15);
+            ageText.setTextSize(15);
+            emailAddText.setTextSize(15);
+            settings.setCustomSize(ThemeSettings.MEDIUM_SIZE);
+
+        }else if (settings.getCustomSize().equals(ThemeSettings.LARGE_SIZE)){
+
+            userProfileTitleTV.setTextSize(20);
+            username.setTextSize(24);
+            fullNameText1.setTextSize(17);
+            ageText.setTextSize(17);
+            emailAddText.setTextSize(17);
+            settings.setCustomSize(ThemeSettings.LARGE_SIZE);
+
         }
     }
     // Update Profile Method

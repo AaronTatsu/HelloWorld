@@ -3,17 +3,21 @@ package com.example.helloworld.Settings;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.helloworld.ExerciseActivity;
 import com.example.helloworld.R;
 
 public class SecurityActivity extends AppCompatActivity {
 
-    private TextView titleTV;
-    private View parentViews;
+    ImageView bckBtn, btnPass;
+    private TextView securityTitleTV, securityTV;
+    private View securityParentView;
 
     private ThemeSettings settings;
 
@@ -22,6 +26,27 @@ public class SecurityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security);
 
+        //Back Button Pressed
+        bckBtn = findViewById(R.id.back_pressed);
+        bckBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SecurityActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Back Button Pressed
+        btnPass = findViewById(R.id.btnPass);
+        btnPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SecurityPassword.class);
+                startActivity(intent);
+            }
+        });
+
+    // Theme SharedPreferences
         settings = (ThemeSettings) getApplication();
 
         initWidgets();
@@ -31,8 +56,9 @@ public class SecurityActivity extends AppCompatActivity {
     }
 
     private void initWidgets() {
-        titleTV = findViewById(R.id.TitleTV);
-        parentViews = findViewById(R.id.parentViews);
+        securityTitleTV = findViewById(R.id.securityTitleTV);
+        securityTV = findViewById(R.id.securityTV);
+        securityParentView = findViewById(R.id.securityParentView);
 
     }
 
@@ -45,16 +71,18 @@ public class SecurityActivity extends AppCompatActivity {
 
     private void updateView() {
 
-        final int black = ContextCompat.getColor(this, R.color.black);
+        final int black = ContextCompat.getColor(this, R.color.light_black);
         final int white = ContextCompat.getColor(this, R.color.light_white);
 
         if(settings.getCustomTheme().equals(ThemeSettings.DARK_THEME)){
-            titleTV.setTextColor(white);
-            parentViews.setBackgroundColor(black);
+            securityTitleTV.setTextColor(white);
+            securityTV.setTextColor(white);
+            securityParentView.setBackgroundColor(black);
 
         }else{
-            titleTV.setTextColor(black);
-            parentViews.setBackgroundColor(white);
+            securityTitleTV.setTextColor(black);
+            securityTV.setTextColor(black);
+            securityParentView.setBackgroundColor(white);
         }
     }
 }

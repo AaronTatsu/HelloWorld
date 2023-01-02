@@ -1,15 +1,19 @@
 package com.example.helloworld;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +32,8 @@ import com.example.helloworld.Settings.SettingsFrequentAsked;
 import com.example.helloworld.Settings.ThemeSettings;
 import com.example.helloworld.Settings.User;
 import com.example.helloworld.Settings.UserProfileActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,17 +42,23 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
     // For Firebase
+    private FirebaseAuth mAuth;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
+    private StorageReference mStorage;
 
     // For Intent
     Button profbtn;
-    ImageView bckBtn, btn1, btn2, btn3, btn4, btn5, btn6, btn7;
+    ImageView profileImg, bckBtn, btn1, btn2, btn3, btn4, btn5, btn6, btn7;
 
     // For Theme
     private SwitchCompat themeSwitch;
@@ -66,6 +78,17 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_settings);
 
         // For Firebase
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mStorage = FirebaseStorage.getInstance().getReference();
+        StorageReference profileRef = mStorage.child("users/"+mAuth.getCurrentUser().getUid()+"/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImg);
+            }
+        });
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -93,6 +116,9 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         });
 
         // Intents
+
+        profileImg = (ImageView) findViewById(R.id.profileImg);
+
         profbtn = (Button) findViewById(R.id.Profilebtn);
         profbtn.setOnClickListener(this);
 
@@ -119,6 +145,16 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         btn7 = (ImageView) findViewById(R.id.settings_btnLogOut);
         btn7.setOnClickListener(this);
+
+        // Change Profile Image
+        profileImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(openGallery,1000);
+            }
+        });
+
 
         //Bottom Navigation Intent
         BottomNavigationView bottomNavigationView = findViewById(R.id.BottonNavigationView);
@@ -172,6 +208,43 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    // For Profile Image
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1000){
+            if(resultCode == Activity.RESULT_OK){
+                Uri imageUri = data.getData();
+                profileImg.setImageURI(imageUri);
+
+                uploadImage(imageUri);
+            }
+        }
+
+    }
+
+    private void uploadImage(Uri imageUri) {
+        StorageReference fileRef = mStorage.child("users/"+mAuth.getCurrentUser().getUid()+"/profile.jpg" );
+        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(settings, "Image Uploaded Successfully!", Toast.LENGTH_SHORT).show();
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).into(profileImg);
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(settings, "Failed to Upload Picture.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    // For Themes
     private void initWidgets() {
 
         //Theme
@@ -428,7 +501,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
 
             settingsTV.setText("Mga Setting");
-            profbtn.setText("Porpolyo'y Baguhin");
+            profbtn.setText("Baguhin ang Profile");
             nightmodeTV.setText("Gawing Gabi");
             notificationsTV.setText("Abiso");
             securityTV.setText("Seguridad");

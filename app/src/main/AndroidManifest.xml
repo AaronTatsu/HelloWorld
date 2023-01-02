@@ -12,6 +12,10 @@
         android:theme="@style/Theme.HelloWorld"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Settings.SecurityPassword"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
             android:name=".ToDoListActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />

@@ -42,6 +42,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/drawable/rounded_corner_black.xml" value="0.331" />
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/drawable/scale.xml" value="0.3385" />
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/drawable/security.xml" value="0.331" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/drawable/security_black.xml" value="0.3285" />
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/drawable/selector.xml" value="0.332" />
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/drawable/settings.xml" value="0.332" />
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/drawable/textexe.xml" value="0.331" />
@@ -84,6 +85,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/layout/activity_push_up3_squeeze.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/layout/activity_register.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/layout/activity_security.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/layout/activity_security_password.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/layout/activity_settings.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/layout/activity_settings_about_us.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/User/AndroidStudioProjects/HelloWorld/app/src/main/res/layout/activity_settings_contact_us.xml" value="0.3009833262077811" />

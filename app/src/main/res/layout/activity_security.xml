@@ -1,23 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/parentViews"
+    android:id="@+id/securityParentView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_white"
     tools:context=".Settings.SecurityActivity">
 
-    <TextView
-        android:id="@+id/TitleTV"
-        android:layout_width="61dp"
-        android:layout_height="15dp"
-        android:text="Light"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:id="@+id/settingsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp">
+
+        <ImageView
+            android:id="@+id/back_pressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:padding="5dp"
+            android:src="@drawable/back_arrow" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/securityTitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Security Settings"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/settingsLayout"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_back_settings_layout"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/Security"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/round_back_textsize"
+                        android:padding="7dp"
+                        android:src="@drawable/security" />
+
+                    <TextView
+                        android:id="@+id/securityTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/Security"
+                        android:gravity="center"
+                        android:text="Change Password"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/btnPass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/right_arrow_icon" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+</RelativeLayout>

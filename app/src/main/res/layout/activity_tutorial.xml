@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tutorial.TutorialActivity">
+
+    <TextView
+        android:id="@+id/skipTutorial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" FINISH >> "
+        android:textAllCaps="true"
+        android:elevation="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_alignParentEnd="true"
+        android:textSize="30sp"
+        android:background="@color/grayest"
+        android:textStyle="bold"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/tutorialPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/circleIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="700dp"
+        android:elevation="20dp"
+        android:background="@color/grayest"/>
+
+</RelativeLayout>

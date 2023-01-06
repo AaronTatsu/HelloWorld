@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.helloworld.MainActivity;
 import com.example.helloworld.R;
 import com.example.helloworld.Settings.ThemeSettings;
+import com.example.helloworld.Tutorial.TutorialActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -321,14 +322,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     if (user.isEmailVerified()) {
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, TutorialActivity.class));
                     } else {
                         user.sendEmailVerification();
-                        Toast.makeText(LoginActivity.this, "Please check your email to verify your account!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "Please check spam on your email to verify your account!", Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
                     }
                 } else {
-                    Toast.makeText(LoginActivity.this, "Failed to login! Try again!", Toast.LENGTH_LONG).show();
-                    progressBar.setVisibility(View.GONE);
+                    try {
+                        throw task.getException();
+                    } catch (Exception e) {
+                        Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
+                    }
                 }
             }
         });

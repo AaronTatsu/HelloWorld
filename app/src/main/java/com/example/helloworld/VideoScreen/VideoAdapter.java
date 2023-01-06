@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.example.helloworld.VideoScreen;
 
 import android.media.MediaPlayer;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.helloworld.R;
 
 import java.util.List;
 

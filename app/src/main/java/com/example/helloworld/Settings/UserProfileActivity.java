@@ -83,6 +83,8 @@ public class UserProfileActivity extends AppCompatActivity {
         emailAddText = findViewById(R.id.emailadd);
         updateBtn = findViewById(R.id.updateBtn);
 
+        emailAddText.setEnabled(false);
+
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

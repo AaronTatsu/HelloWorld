@@ -12,6 +12,10 @@
         android:theme="@style/Theme.HelloWorld"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Tutorial.TutorialActivity"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
             android:name=".Settings.SecurityPassword"
             android:exported="false"
             android:theme="@style/FullScreen" />
@@ -152,7 +156,7 @@
             android:exported="false"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".VideoScreen.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".AccountEntry.SplashScreen"

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.example.helloworld.R;
+import com.example.helloworld.Tutorial.TutorialActivity;
 
 public class SplashScreen extends AppCompatActivity {
 

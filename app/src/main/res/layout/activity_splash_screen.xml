@@ -24,9 +24,10 @@
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/textlogo"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:src='@drawable/logotext'
-        app:layout_constraintBottom_toBottomOf="@+id/splash"
+        android:layout_height="100dp"
+        android:src='@drawable/newlogotext'
+        android:layout_marginBottom="210dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />

@@ -8,6 +8,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -224,10 +225,15 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void uploadImage(Uri imageUri) {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Setting your Profile");
+        progressDialog.setMessage("Please wait, while we are uploading your image");
+        progressDialog.show();
         StorageReference fileRef = mStorage.child("users/"+mAuth.getCurrentUser().getUid()+"/profile.jpg" );
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                progressDialog.dismiss();
                 Toast.makeText(settings, "Image Uploaded Successfully!", Toast.LENGTH_SHORT).show();
                 fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
@@ -239,6 +245,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                progressDialog.dismiss();
                 Toast.makeText(settings, "Failed to Upload Picture.", Toast.LENGTH_SHORT).show();
             }
         });

@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.example.helloworld.VideoScreen;
 
 public class Video {
     private String videoUrl, title, desc;

@@ -14,7 +14,7 @@ import com.example.helloworld.R;
 public class TutorialAdapter extends PagerAdapter {
 
     private Context ctx;
-    private int[] imageArray = new int[] {R.drawable.tutorial1, R.drawable.tutorial2, R.drawable.tutorial3, R.drawable.tutorial4, R.drawable.tutorial5, R.drawable.tutorial6, R.drawable.tutorial7, R.drawable.tutorial8, R.drawable.tutorial9};
+    private int[] imageArray = new int[] {R.drawable.tutorialwelcome, R.drawable.tutorialbmi, R.drawable.tutorialtodo, R.drawable.tutorialvideoscreen, R.drawable.tutorialsettings, R.drawable.tutorialsettings2, R.drawable.tutorialexercise, R.drawable.tutorialexe2, R.drawable.tutorialexe3};
 
     TutorialAdapter(Context context) {ctx = context;}
 

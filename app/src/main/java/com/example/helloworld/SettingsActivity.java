@@ -33,8 +33,10 @@ import com.example.helloworld.Settings.SettingsFrequentAsked;
 import com.example.helloworld.Settings.ThemeSettings;
 import com.example.helloworld.Settings.User;
 import com.example.helloworld.Settings.UserProfileActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,6 +45,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -373,6 +376,18 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 if (isChecked) {
                     Toast.makeText(SettingsActivity.this, "Notification is turned on!", Toast.LENGTH_SHORT).show();
                     settings.setCustomNotif(ThemeSettings.NOTIF_ON);
+
+                    FirebaseMessaging.getInstance().subscribeToTopic("weather")
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    String msg = "Done";
+                                    if (!task.isSuccessful()){
+                                        msg = "Failed";
+                                    }
+                                }
+                            });
+
                 } else {
                     Toast.makeText(SettingsActivity.this, "Notification is turned off!", Toast.LENGTH_SHORT).show();
                     settings.setCustomNotif(ThemeSettings.NOTIF_OFF);

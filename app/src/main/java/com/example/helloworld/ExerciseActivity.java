@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.example.helloworld.Exercise.ArmsExercise;
 import com.example.helloworld.Exercise.BackExercise;
 import com.example.helloworld.Exercise.ChestExercise;
+import com.example.helloworld.Exercise.CoreExercise;
+import com.example.helloworld.Exercise.LegsExercise;
 import com.example.helloworld.Settings.ThemeSettings;
 import com.example.helloworld.Tutorial.TutorialExercise;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -88,7 +90,7 @@ public class ExerciseActivity extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
+                Intent intent = new Intent(getApplicationContext(), CoreExercise.class);
                 startActivity(intent);
             }
         });
@@ -97,7 +99,7 @@ public class ExerciseActivity extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
+                Intent intent = new Intent(getApplicationContext(), LegsExercise.class);
                 startActivity(intent);
             }
         });

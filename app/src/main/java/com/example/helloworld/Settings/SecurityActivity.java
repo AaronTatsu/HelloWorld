@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.helloworld.ExerciseActivity;
 import com.example.helloworld.R;
+import com.example.helloworld.SettingsActivity;
 
 public class SecurityActivity extends AppCompatActivity {
 
@@ -31,7 +32,7 @@ public class SecurityActivity extends AppCompatActivity {
         bckBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SecurityActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(intent);
             }
         });

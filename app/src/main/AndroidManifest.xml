@@ -12,6 +12,62 @@
         android:theme="@style/Theme.HelloWorld"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Exercise.LegsExercise_3_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.LegsExercise_3"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.LegsExercise_2_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.LegsExercise_2"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.LegsExercise_1_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.LegsExercise_1"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.LegsExercise"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.CoreExercise_3_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.CoreExercise_3"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.CoreExercise_2_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.CoreExercise_2"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.CoreExercise_1_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.CoreExercise_1"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.CoreExercise"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
             android:name=".AccountEntry.PrivacyPolicy"
             android:exported="false"
             android:theme="@style/FullScreen" />

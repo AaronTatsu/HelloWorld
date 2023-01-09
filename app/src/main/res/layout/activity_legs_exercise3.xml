@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/legsDonkeyParentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_white"
+    tools:context=".Exercise.LegsExercise_3">
+
+    <RelativeLayout
+        android:id="@+id/UpBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp">
+
+        <ImageView
+            android:id="@+id/back_pressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:padding="5dp"
+            android:src="@drawable/back_arrow" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/UpBar"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/legsDonkeyTV1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:text="Donkey Kicks"
+            android:textAllCaps="true"
+            android:textColor="@color/dark_gray"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ARbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/round_back_exercise_end_layout"
+            android:src="@drawable/eye" />
+
+        <TextView
+            android:id="@+id/legsDonkeyTV2"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="-25dp"
+            android:layout_marginRight="35dp"
+            android:text="View in AR"
+            android:textColor="@color/dark_gray"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/textbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/round_back_exercise_end_layout"
+            android:src="@drawable/textexe" />
+
+        <TextView
+            android:id="@+id/legsDonkeyTV3"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="-25dp"
+            android:layout_marginRight="35dp"
+            android:text="View in Text"
+            android:textColor="@color/dark_gray"
+            android:textSize="14sp" />
+
+        <pl.droidsonroids.gif.GifImageView
+
+            android:layout_width="370dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/donkey_kicks" />
+
+        <SeekBar
+            android:id="@+id/timer_sb"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp" />
+
+        <TextView
+            android:id="@+id/timer_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="1:00"
+            android:textColor="@color/dark_gray"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/start_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="start_timer"
+            android:text="START"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</RelativeLayout>

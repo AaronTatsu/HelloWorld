@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coreCrunchParentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_white"
+    tools:context=".Exercise.CoreExercise_2">
+
+    <RelativeLayout
+        android:id="@+id/UpBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp">
+
+        <ImageView
+            android:id="@+id/back_pressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:padding="5dp"
+            android:src="@drawable/back_arrow" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/UpBar"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/coreCrunchTV1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:text="Bicycle Crunches"
+            android:textAllCaps="true"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_gray"/>
+
+        <ImageView
+            android:id="@+id/ARbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/round_back_exercise_end_layout"
+            android:src="@drawable/eye" />
+
+        <TextView
+            android:id="@+id/coreCrunchTV2"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="-25dp"
+            android:layout_marginRight="35dp"
+            android:text="View in AR"
+            android:textSize="14sp"
+            android:textColor="@color/dark_gray"/>
+
+        <ImageView
+            android:id="@+id/textbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/round_back_exercise_end_layout"
+            android:src="@drawable/textexe" />
+
+        <TextView
+            android:id="@+id/coreCrunchTV3"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="-25dp"
+            android:layout_marginRight="35dp"
+            android:text="View in Text"
+            android:textSize="14sp"
+            android:textColor="@color/dark_gray"/>
+
+        <pl.droidsonroids.gif.GifImageView
+
+            android:layout_width="370dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/bicycle_crunch" />
+
+        <SeekBar
+            android:id="@+id/timer_sb"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp" />
+
+        <TextView
+            android:id="@+id/timer_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="1:00"
+            android:textSize="60sp"
+            android:textColor="@color/dark_gray"/>
+
+        <Button
+            android:id="@+id/start_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="start_timer"
+            android:text="START"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+</RelativeLayout>

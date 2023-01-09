@@ -33,6 +33,7 @@ import com.example.helloworld.Settings.SettingsFrequentAsked;
 import com.example.helloworld.Settings.ThemeSettings;
 import com.example.helloworld.Settings.User;
 import com.example.helloworld.Settings.UserProfileActivity;
+import com.example.helloworld.Tutorial.TutorialSettings;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -62,7 +63,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     // For Intent
     Button profbtn;
-    ImageView profileImg, bckBtn, btn1, btn2, btn3, btn4, btn5, btn6, btn7;
+    ImageView profileImg, bckBtn, tutorial, btn1, btn2, btn3, btn4, btn5, btn6, btn7;
 
     // For Theme
     private SwitchCompat themeSwitch;
@@ -128,6 +129,9 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         bckBtn = (ImageView) findViewById(R.id.back_pressed);
         bckBtn.setOnClickListener(this);
+
+        tutorial = (ImageView) findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(this);
 
         btn1 = (ImageView) findViewById(R.id.settings_btnSecurity);
         btn1.setOnClickListener(this);
@@ -420,6 +424,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
             case R.id.back_pressed:
                 startActivity(new Intent(this, MainActivity.class));
+                break;
+
+            case R.id.tutorial:
+                startActivity(new Intent(this, TutorialSettings.class));
                 break;
 
             case R.id.settings_btnSecurity:

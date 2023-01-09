@@ -12,6 +12,38 @@
         android:theme="@style/Theme.HelloWorld"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AccountEntry.PrivacyPolicy"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".AccountEntry.TermsAndAgreement"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Tutorial.TutorialVideoScreen"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Tutorial.TutorialExe1"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Tutorial.TutorialExercise"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Tutorial.TutorialSettings"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Tutorial.TutorialToDo"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Tutorial.TutorialBMI"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
             android:name=".Tutorial.TutorialActivity"
             android:exported="false"
             android:theme="@style/FullScreen" />
@@ -175,6 +207,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

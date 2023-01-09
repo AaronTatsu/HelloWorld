@@ -293,11 +293,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.termsAgreementCon:
-                startActivity(new Intent(this, NotAvailablePage.class));
+                startActivity(new Intent(this, TermsAndAgreement.class));
                 break;
 
             case R.id.termsAgreementPrivacy:
-                startActivity(new Intent(this, NotAvailablePage.class));
+                startActivity(new Intent(this, PrivacyPolicy.class));
                 break;
 
             case R.id.bckLogin:

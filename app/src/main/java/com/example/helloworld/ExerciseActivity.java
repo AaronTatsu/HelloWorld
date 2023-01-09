@@ -17,11 +17,12 @@ import com.example.helloworld.Exercise.ArmsExercise;
 import com.example.helloworld.Exercise.BackExercise;
 import com.example.helloworld.Exercise.ChestExercise;
 import com.example.helloworld.Settings.ThemeSettings;
+import com.example.helloworld.Tutorial.TutorialExercise;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ExerciseActivity extends AppCompatActivity {
     // Intents
-    ImageView bckBtn;
+    ImageView bckBtn, tutorial;
     Button btn1, btn2, btn3, btn4, btn5, btn6;
 
     // Theme SharedPreferences
@@ -44,6 +45,17 @@ public class ExerciseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Tutorial Intent
+        tutorial = findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TutorialExercise.class);
+                startActivity(intent);
+            }
+        });
+
         //Categories Intent
         btn1 = findViewById(R.id.cat_btn1);
         btn1.setOnClickListener(new View.OnClickListener() {

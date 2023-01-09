@@ -13,11 +13,12 @@ import android.widget.TextView;
 import com.example.helloworld.ExerciseActivity;
 import com.example.helloworld.R;
 import com.example.helloworld.Settings.ThemeSettings;
+import com.example.helloworld.Tutorial.TutorialExe1;
 
 public class ChestExercise extends AppCompatActivity {
 
     // Intent
-    ImageView bckBtn, btn1, btn2, btn3;
+    ImageView bckBtn, tutorial, btn1, btn2, btn3;
 
     //Theme SharedPreferences
     private View chestParentView;
@@ -39,6 +40,17 @@ public class ChestExercise extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Back Button Pressed
+        tutorial = findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TutorialExe1.class);
+                startActivity(intent);
+            }
+        });
+
         //Chest Category Buttons
         btn1 = findViewById(R.id.chest_btn_1);
         btn1.setOnClickListener(new View.OnClickListener() {

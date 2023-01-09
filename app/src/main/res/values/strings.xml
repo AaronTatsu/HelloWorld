@@ -31,4 +31,11 @@
 
     <string name="about_us_tag">\tTikTonic Fitness and Exercise application ay binuo ng mga mag-aaral ng Cavite State University Imus - Campus na pinangalanang Ms. Jella Mae V. Potes, Mr. Ronald V. De Guzman, Mr. Renz Matthew D. Valeriano at G. Aaron Robin D. Virata. Ginagamit ang android project na ito para sa kanilang Capstone Research Project.</string>
     <string name="about_us1_tag">\tAng application ng TikTonic Fitness and Exercise ay isang user friendly na proyekto sa pananaliksik na nagbibigay ng mga kapaki-pakinabang na benepisyo sa user nito na may mga feature na gagawing mas nakakaaliw na maging angkop lalo na sa panahong ito kung saan lahat ay maaaring hanapin sa internet. Ang application ay ginabayan ng kliyente na isang mahusay na tagapagturo na nagbigay ng mga katotohanan ng aplikasyon at sinuri ang buong proyekto upang maiwasan ang maling impormasyon at maaaring magdulot ng ilang komplikasyon sa mga user.</string>
+
+    <string name="terms_of_service">\tTikTonic Fitness and Exercise application provides a platform via mobile android application to a community of registered users to engage in variety of activites such as viewing videos and exercises. The foregoing list of services is not all inclusive and additional services may be offered by us from time to time such as updating the application. The following is the term of using our application and services.</string>
+    <string name="terms_of_service1">\tBy using the services, you are agreeing on behalf of yourself and those you represent, to comply with and be legally bound by these terms as well as our privacy policy and applicable laws.If you, on behalf of yourself does not agree with any provision of these terms. Discontinue the registration process and if you are already registered, cancel your account.</string>
+
+    <string name="privacy_policy">\tIt is important that you understand what information TikTonic collects, uses and how you can control it. TikTonic Fitness and Exercise Application respects and protects your personal information and your privacy.</string>
+    <string name="privacy_policy1">\tWhy does TikTonic uses your data? To give you a customized exercise experience and improve our services.</string>
+
 </resources>

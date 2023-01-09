@@ -23,6 +23,7 @@ import com.example.helloworld.ToDoList.RecyclerTouchHelper;
 import com.example.helloworld.ToDoList.ToDoAdapter;
 import com.example.helloworld.ToDoList.ToDoDBHandler;
 import com.example.helloworld.ToDoList.ToDoModel;
+import com.example.helloworld.Tutorial.TutorialToDo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -47,19 +48,28 @@ public class ToDoListActivity extends AppCompatActivity implements DialogCloseLi
     private ThemeSettings settings;
 
     // Back Button Intent
-    ImageView bckBtn;
+    ImageView bckBtn, tutorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do_list);
 
-        //BackButtonPressed
+        //Back Button & Tutorial Intent
         bckBtn = findViewById(R.id.back_pressed);
         bckBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tutorial = findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TutorialToDo.class);
                 startActivity(intent);
             }
         });

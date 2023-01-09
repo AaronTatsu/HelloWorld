@@ -45,6 +45,19 @@
         app:layout_constraintTop_toTopOf="@+id/textDivider"
         app:layout_constraintBottom_toBottomOf="@+id/textDivider"/>
 
+    <ImageView
+        android:id="@+id/tutorial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:elevation="25dp"
+        android:src="@drawable/tutorialsign"
+        app:tint="@android:color/white"
+        app:layout_constraintStart_toEndOf="@id/videoScreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/videoScreen"
+        app:layout_constraintBottom_toBottomOf="@id/videoScreen"/>
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager2"
         android:layout_width="0dp"

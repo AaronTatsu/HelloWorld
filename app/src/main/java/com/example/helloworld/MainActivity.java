@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.helloworld.Tutorial.TutorialVideoScreen;
 import com.example.helloworld.VideoScreen.Video;
 import com.example.helloworld.VideoScreen.VideoAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     // Intent
     TextView augmentedReality, videoScreen;
 
+    ImageView tutorial;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,20 +42,18 @@ public class MainActivity extends AppCompatActivity {
         viewPager2 = findViewById(R.id.viewPager2);
 
         videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.newstandpos, "Individual Stunts", "    This video shows individual stunts which is turk stand and rocking chair."));
-        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.newarmsupport, "Arms Support Position", "    This video shows arm supports which is supine or back arm support, prone or front arm support and side arm support."));
+        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.standpos3, "Basic Stand Position", "    This video shows basic stand position in gymnastic which is egg roll or tuck roll sideward, log roll. human ball and jump to full turn."));
+        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.standpos4, "Basic Stand Position", "    This video shows basic stand position in gymnastic which is dog walk, frog kick, lame dog, frog jump, inc worm walk, crab walk and hip walk."));
         videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.newstandfirst, "Basic Position Standing", "    This video shows basic standing position in gymnastic which is feet together, stride position, lunge position, half-knee bend and full-knees bend."));
+        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.handposition, "Basic Hand Position", "    This video shows basic hand position in gymnastic which is hands on waists, hands on chest, hands on shoulder, hands on neck and hands on hips."));
+        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.armsposition, "Basic Arms Position", "    This video shows basic arms position in gymnastic which is arms forward, arms sideward, arms upward, arms in oblique position and front arms in oblique position."));
+        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.armsposition2, "Basic Arms Position", "    This video shows basic arms position in gymnastic which is back arms in oblique position, sideward arms in oblique position, upward arms in oblique position, arms in T position and Reverse T."));
+        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.newarmsupport, "Arms Support Position", "    This video shows arm supports which is supine or back arm support, prone or front arm support and side arm support."));
         videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.sitting, "Basic Position Sitting", "    This video shows basic sitting position in gymnastic which is long sitting, hook sitting, long sitting rest, tuck sitting, stride sitting, side sitting, hurdle sitting, heels sit, cross sitting and frog sitting,."));
         videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.kneeling, "Basic Position Kneeling", "    This video shows basic kneeling position in gymnastic which is kneeling, stride kneeling, half-kneeling and kneeling position one leg extended."));
         videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.lying, "Basic Position Lying", "    This video shows basic lying position in gymnastic which is back or supine lying, front lying, side lying, hook lying position and tuck lying position."));
         videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.fourbased, "Basic Position Four Based", "    This video shows basic four based position in gymnastic which is dog stand position and bridge stand position."));
-        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.handposition, "Basic Hand Position", "    This video shows basic hand position in gymnastic which is hands on waists, hands on chest, hands on shoulder, hands on neck and hands on hips."));
-        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.armsposition, "Basic Arms Position", "    This video shows basic arms position in gymnastic which is arms forward, arms sideward, arms upward, arms in oblique position and front arms in oblique position."));
-        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.armsposition2, "Basic Arms Position", "    This video shows basic arms position in gymnastic which is back arms in oblique position, sideward arms in oblique position, upward arms in oblique position, arms in T position and Reverse T."));
         videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.standpos2, "Basic Stand Position", "    This video shows basic stand position in gymnastic which is prone rocking, ankle hold, coffee grinder."));
-        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.standpos3, "Basic Stand Position", "    This video shows basic stand position in gymnastic which is egg roll or tuck roll sideward, log roll. human ball and jump to full turn."));
-        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.standpos4, "Basic Stand Position", "    This video shows basic stand position in gymnastic which is dog walk, frog kick, lame dog, frog jump, inc worm walk, crab walk and hip walk."));
-        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.b, "Healthy Granola Bars | Quick and easy Protein Bars", "   If you're looking for the quickest healthy snack to make for a busy week ahead, these granola bars are for you! Loaded with oats and dry fruits, these granola bars are not only easy to make but also taste absolutely delicious!"));
-        videoList.add(new Video("android.resource://" + getPackageName() + "/" + R.raw.c, "Easy, Healthy, High Protein Breakfast Sandwich", "   Hey guys, Fithackster back at it again with another recipe video. In today's video, I will be showing you how to make an easy high protein and low calorie breakfast recipe that will keep you full and fuel your body for a great start to your day!"));
 
         adapter = new VideoAdapter(videoList);
         viewPager2.setAdapter(adapter);
@@ -72,6 +74,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tutorial = findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TutorialVideoScreen.class);
                 startActivity(intent);
             }
         });

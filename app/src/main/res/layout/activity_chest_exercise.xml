@@ -31,6 +31,15 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/tutorial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:src="@drawable/tutorialsign" />
     </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"

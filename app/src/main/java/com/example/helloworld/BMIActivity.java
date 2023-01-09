@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.helloworld.Settings.ThemeSettings;
+import com.example.helloworld.Tutorial.TutorialBMI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BMIActivity extends AppCompatActivity {
@@ -38,19 +39,28 @@ public class BMIActivity extends AppCompatActivity {
     private ThemeSettings settings;
 
     //Button Intent
-    ImageView bckBtn;
+    ImageView bckBtn, tutorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmiactivity);
 
-        //BackButtonPressed
+        //Back Button & Tutorial Intent
         bckBtn = findViewById(R.id.back_pressed);
         bckBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tutorial = findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TutorialBMI.class);
                 startActivity(intent);
             }
         });

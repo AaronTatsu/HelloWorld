@@ -329,36 +329,47 @@ public class BMIActivity extends AppCompatActivity {
 
     //BMI Calculation
     private void calculate(){
-        h=Float.parseFloat(height.getText().toString());
-        w=Float.parseFloat(weight.getText().toString());
+        if (user.equals("Male")) {
+            h = Float.parseFloat(height.getText().toString());
+            w = Float.parseFloat(weight.getText().toString());
             float hm;
-            hm = h/100;
-            bmi = (w/(hm*hm));
+            hm = h / 100;
+            bmi = (w / (hm * hm));
             result.setText(Float.toString(bmi));
-            if (bmi>=40){
-                res = "Obese class III";
+            if (bmi >= 26.9) {
+                res = "Obese";
                 condition.setText(res);
-            }
-            else if (bmi>=35){
-                res = "Obese class II";
-                condition.setText(res);
-            }
-            else if (bmi>=30){
-                res = "Obese class I";
-                condition.setText(res);
-            }
-            else if (bmi>=25){
+            } else if (bmi >= 23.7) {
                 res = "Overweight";
                 condition.setText(res);
-            }
-            else if (bmi>=18.5){
+            } else if (bmi >= 17.8) {
                 res = "Normal weight";
                 condition.setText(res);
-            }
-            else{
-                res="Underweight";
+            } else {
+                res = "Underweight";
                 condition.setText(res);
             }
+        }else{
+            h = Float.parseFloat(height.getText().toString());
+            w = Float.parseFloat(weight.getText().toString());
+            float hm;
+            hm = h / 100;
+            bmi = (w / (hm * hm));
+            result.setText(Float.toString(bmi));
+            if (bmi >= 28.8) {
+                res = "Obese";
+                condition.setText(res);
+            } else if (bmi >= 25.7) {
+                res = "Overweight";
+                condition.setText(res);
+            } else if (bmi >= 17.8) {
+                res = "Normal weight";
+                condition.setText(res);
+            } else {
+                res = "Underweight";
+                condition.setText(res);
+            }
+        }
 
     }
     // Back Button Intent

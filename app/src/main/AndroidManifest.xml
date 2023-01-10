@@ -12,6 +12,34 @@
         android:theme="@style/Theme.HelloWorld"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Exercise.BodyExercise_3_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BodyExercise_3"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BodyExercise_2"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BodyExercise_2_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BodyExercise_1_text"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BodyExercise_1"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BodyExercise"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
             android:name=".Exercise.LegsExercise_3_text"
             android:exported="false"
             android:theme="@style/FullScreen" />

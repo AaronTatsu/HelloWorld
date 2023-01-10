@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.helloworld.Exercise.ArmsExercise;
 import com.example.helloworld.Exercise.BackExercise;
+import com.example.helloworld.Exercise.BodyExercise;
 import com.example.helloworld.Exercise.ChestExercise;
 import com.example.helloworld.Exercise.CoreExercise;
 import com.example.helloworld.Exercise.LegsExercise;
@@ -108,7 +109,7 @@ public class ExerciseActivity extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
+                Intent intent = new Intent(getApplicationContext(), BodyExercise.class);
                 startActivity(intent);
             }
         });

@@ -57,7 +57,7 @@ public class BodyExercise_1 extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
+                Intent intent = new Intent(getApplicationContext(), BodyExercise_1_video.class);
                 startActivity(intent);
             }
         });
@@ -161,7 +161,7 @@ public class BodyExercise_1 extends AppCompatActivity {
         if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
 
             bodyBurpeeTV1.setText("Burpee");
-            bodyBurpeeTV2.setText("View in AR");
+            bodyBurpeeTV2.setText("View in Video");
             bodyBurpeeTV3.setText("View in Text");
             start_btn.setText("START");
             settings.setCustomLang(ThemeSettings.ENG_LANG);
@@ -169,7 +169,7 @@ public class BodyExercise_1 extends AppCompatActivity {
         }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
 
             bodyBurpeeTV1.setText("Burpee");
-            bodyBurpeeTV2.setText("Tignan sa AR");
+            bodyBurpeeTV2.setText("Tignan sa Bidyo");
             bodyBurpeeTV3.setText("Tignan sa Teksto");
             start_btn.setText("SIMULAN");
             settings.setCustomLang(ThemeSettings.TAG_LANG);

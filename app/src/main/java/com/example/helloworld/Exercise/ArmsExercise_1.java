@@ -57,7 +57,7 @@ public class ArmsExercise_1 extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
+                Intent intent = new Intent(getApplicationContext(), ArmsExercise_1_video.class);
                 startActivity(intent);
             }
         });
@@ -161,7 +161,7 @@ public class ArmsExercise_1 extends AppCompatActivity {
         if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
 
             armsTricepTV1.setText("Triceps Dip");
-            armsTricepTV2.setText("View in AR");
+            armsTricepTV2.setText("View in Video");
             armsTricepTV3.setText("View in Text");
             start_btn.setText("START");
             settings.setCustomLang(ThemeSettings.ENG_LANG);
@@ -169,7 +169,7 @@ public class ArmsExercise_1 extends AppCompatActivity {
         }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
 
             armsTricepTV1.setText("Paglubog ng Triseps");
-            armsTricepTV2.setText("Tignan sa AR");
+            armsTricepTV2.setText("Tignan sa Bidyo");
             armsTricepTV3.setText("Tignan sa Teksto");
             start_btn.setText("SIMULAN");
             settings.setCustomLang(ThemeSettings.TAG_LANG);

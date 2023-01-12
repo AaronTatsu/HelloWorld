@@ -57,7 +57,7 @@ public class BackExercise_3 extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
+                Intent intent = new Intent(getApplicationContext(), BackExercise_3_video.class);
                 startActivity(intent);
             }
         });
@@ -161,7 +161,7 @@ public class BackExercise_3 extends AppCompatActivity {
         if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
 
             backSuperTTV1.setText("Superman T");
-            backSuperTTV2.setText("View in AR");
+            backSuperTTV2.setText("View in Video");
             backSuperTTV3.setText("View in Text");
             start_btn.setText("START");
             settings.setCustomLang(ThemeSettings.ENG_LANG);
@@ -169,7 +169,7 @@ public class BackExercise_3 extends AppCompatActivity {
         }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
 
             backSuperTTV1.setText("Superman T");
-            backSuperTTV2.setText("Tignan sa AR");
+            backSuperTTV2.setText("Tignan sa Bidyo");
             backSuperTTV3.setText("Tignan sa Teksto");
             start_btn.setText("SIMULAN");
             settings.setCustomLang(ThemeSettings.TAG_LANG);

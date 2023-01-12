@@ -57,7 +57,7 @@ public class ArmsExercise_2 extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
+                Intent intent = new Intent(getApplicationContext(), ArmsExercise_2_video.class);
                 startActivity(intent);
             }
         });
@@ -160,7 +160,7 @@ public class ArmsExercise_2 extends AppCompatActivity {
         if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
 
             armsPlankTV1.setText("Plank Up and Down");
-            armsPlankTV2.setText("View in AR");
+            armsPlankTV2.setText("View in Video");
             armsPlankTV3.setText("View in Text");
             start_btn.setText("START");
             settings.setCustomLang(ThemeSettings.ENG_LANG);
@@ -168,7 +168,7 @@ public class ArmsExercise_2 extends AppCompatActivity {
         }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
 
             armsPlankTV1.setText("Plank Pataas at Pababa");
-            armsPlankTV2.setText("Tignan sa AR");
+            armsPlankTV2.setText("Tignan sa Bidyo");
             armsPlankTV3.setText("Tignan sa Teksto");
             start_btn.setText("SIMULAN");
             settings.setCustomLang(ThemeSettings.TAG_LANG);

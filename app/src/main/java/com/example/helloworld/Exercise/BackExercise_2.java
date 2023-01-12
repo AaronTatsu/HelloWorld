@@ -57,7 +57,7 @@ public class BackExercise_2 extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
+                Intent intent = new Intent(getApplicationContext(), BackExercise_2_video.class);
                 startActivity(intent);
             }
         });
@@ -161,7 +161,7 @@ public class BackExercise_2 extends AppCompatActivity {
         if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
 
             backBirdTV1.setText("Bird Dog");
-            backBirdTV2.setText("View in AR");
+            backBirdTV2.setText("View in Video");
             backBirdTV3.setText("View in Text");
             start_btn.setText("START");
             settings.setCustomLang(ThemeSettings.ENG_LANG);
@@ -169,7 +169,7 @@ public class BackExercise_2 extends AppCompatActivity {
         }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
 
             backBirdTV1.setText("Ibon Aso");
-            backBirdTV2.setText("Tignan sa AR");
+            backBirdTV2.setText("Tignan sa Bidyo");
             backBirdTV3.setText("Tignan sa Teksto");
             start_btn.setText("SIMULAN");
             settings.setCustomLang(ThemeSettings.TAG_LANG);

@@ -12,6 +12,78 @@
         android:theme="@style/Theme.HelloWorld"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Exercise.LegsExercise_3_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.LegsExercise_2_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.LegsExercise_1_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.CoreExercise_3_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.CoreExercise_2_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.CoreExercise_1_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BodyExercise_3_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BodyExercise_2_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BodyExercise_1_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.ChestExercise_3_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.ChestExercise_2_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.ChestExercise_1_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BackExercise_3_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BackExercise_2_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.BackExercise_1_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.ArmsExercise_3_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.ArmsExercise_2_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".Exercise.ArmsExercise_1_video"
+            android:exported="false"
+            android:theme="@style/FullScreen" />
+        <activity
             android:name=".Exercise.BodyExercise_3_text"
             android:exported="false"
             android:theme="@style/FullScreen" />

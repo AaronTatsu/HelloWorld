@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_gravity="end"
-            android:text="View in AR"
+            android:text="View in Video"
             android:textSize="14sp"
             android:layout_marginRight="35dp"
             android:layout_marginTop="-25dp"/>

@@ -57,7 +57,7 @@ public class ChestExercise_1 extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
+                Intent intent = new Intent(getApplicationContext(), ChestExercise_1_video.class);
                 startActivity(intent);
             }
         });
@@ -161,7 +161,7 @@ public class ChestExercise_1 extends AppCompatActivity {
         if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
 
             chestPushTV1.setText("Push Up");
-            chestPushTV2.setText("View in AR");
+            chestPushTV2.setText("View in Video");
             chestPushTV3.setText("View in Text");
             start_btn.setText("START");
             settings.setCustomLang(ThemeSettings.ENG_LANG);
@@ -169,7 +169,7 @@ public class ChestExercise_1 extends AppCompatActivity {
         }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
 
             chestPushTV1.setText("Pagdiin-Angat");
-            chestPushTV2.setText("Tignan sa AR");
+            chestPushTV2.setText("Tignan sa Bidyo");
             chestPushTV3.setText("Tignan sa Teksto");
             start_btn.setText("SIMULAN");
             settings.setCustomLang(ThemeSettings.TAG_LANG);

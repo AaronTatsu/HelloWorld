@@ -57,7 +57,7 @@ public class CoreExercise_2 extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotAvailablePage.class);
+                Intent intent = new Intent(getApplicationContext(), CoreExercise_2_video.class);
                 startActivity(intent);
             }
         });
@@ -161,7 +161,7 @@ public class CoreExercise_2 extends AppCompatActivity {
         if(settings.getCustomLang().equals(ThemeSettings.ENG_LANG)){
 
             coreCrunchTV1.setText("Bicycle Crunches");
-            coreCrunchTV2.setText("View in AR");
+            coreCrunchTV2.setText("View in Video");
             coreCrunchTV3.setText("View in Text");
             start_btn.setText("START");
             settings.setCustomLang(ThemeSettings.ENG_LANG);
@@ -169,7 +169,7 @@ public class CoreExercise_2 extends AppCompatActivity {
         }else if (settings.getCustomLang().equals(ThemeSettings.TAG_LANG)){
 
             coreCrunchTV1.setText("Mga Crunches ng Bicycle");
-            coreCrunchTV2.setText("Tignan sa AR");
+            coreCrunchTV2.setText("Tignan sa Bidyo");
             coreCrunchTV3.setText("Tignan sa Teksto");
             start_btn.setText("SIMULAN");
             settings.setCustomLang(ThemeSettings.TAG_LANG);
